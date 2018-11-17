@@ -1,3 +1,7 @@
+/*
+    Maps API key: AIzaSyD6v6JSJAT6RMX48zZWLVj4A1dfktUdS54
+*/
+
 //Set Cloudinary cloud name
 cloudinary.setCloudName('djzrsujql');
 //Cloudinary Upload Widget Implementation
@@ -40,3 +44,12 @@ $("#submit-chat").on("click", function (event) {
 database.ref("/chat").orderByChild("dateAdded").limitToLast(1).on("value", function (snapshot) {
     $("#chat-window").append("</br>" + snapshot.val().message + "</br>");
 });
+
+// Maps stuff
+var map;
+var latVar = 41.85;
+var lngVar = -87.64;
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {center: {lat: latVar, lng: lngVar}, zoom: 13});
+}
