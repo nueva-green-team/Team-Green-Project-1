@@ -46,10 +46,36 @@ database.ref("/chat").orderByChild("dateAdded").limitToLast(1).on("value", funct
 });
 
 // Maps stuff
-var map;
+var map, infoWindow;
 var latVar = 41.85;
 var lngVar = -87.64;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {center: {lat: latVar, lng: lngVar}, zoom: 13});
+    infoWindow = new google.maps.InfoWindow;
+
+    // Try HTML5 geoloc
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent("Location found.");
+            infoWindow.open(map);
+            map.setCenter(pos);
+        }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ? "Error: The Geolocation service failed" : "Error: Your browser doesn\'t support geolocation");
+    infoWindow.open(map);
 }
