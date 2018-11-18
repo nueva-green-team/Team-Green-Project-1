@@ -230,7 +230,7 @@ body {
   background-color: #ACEBB3;
   border-style: solid;
   border-width: 10px;
-  margin-top: 200px;
+  margin-top: 250px;
   margin-right: 70px;
   margin-left: 70px;
 }
@@ -253,12 +253,14 @@ body {
 
 
 .btn-primary {
-margin-left: 250px;
+margin-left: 350px;
+margin-top: 425px;
 }
 
 .btn {
-  margin-left: 300px;
-  margin-right: 50px;
+  margin-left: 500px;
+  margin-right: 70px;
+  margin-top: 20px;
   background-color: #ffffaa;
   font-family: 'Amatic SC';
   border-width: 5px;
@@ -266,6 +268,8 @@ margin-left: 250px;
   color: #000000;
   font: bold;
   padding: 15px 40px;
+  font-size: 40px;
+  position: center;
 }
 
 
