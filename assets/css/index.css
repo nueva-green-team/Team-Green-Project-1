@@ -210,7 +210,7 @@ body {
 }
 
 .icon-bar a {
-    float: left; /* Float links side by side */
+    float: right; /* Float links side by side */
     text-align: center; /* Center-align text */
     width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
     padding: 12px 0; /* Some top and bottom padding */
@@ -259,7 +259,7 @@ margin-top: 425px;
 
 .btn {
   margin-left: 500px;
-  margin-right: 70px;
+  margin-right: 200px;
   margin-top: 20px;
   background-color: #ffffaa;
   font-family: 'Amatic SC';
@@ -269,7 +269,7 @@ margin-top: 425px;
   font: bold;
   padding: 15px 40px;
   font-size: 40px;
-  position: center;
+  display:inline-block;
 }
 
 
