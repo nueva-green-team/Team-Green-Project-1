@@ -195,11 +195,44 @@ margin-top:-20px;
 text-align:right;
 } */
 
+body {
+    background-image: url("https://i.pinimg.com/originals/96/a5/26/96a526d2dfa752b5b6c4e40cf5985d8f.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
+
+.icon-bar {
+    width: 100%; /* Full-width */
+    background-color: #000000; /* Dark-grey background */
+    overflow: auto; /* Overflow due to float */
+}
+
+.icon-bar a {
+    float: left; /* Float links side by side */
+    text-align: center; /* Center-align text */
+    width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
+    padding: 12px 0; /* Some top and bottom padding */
+    transition: all 0.3s ease; /* Add transition for hover effects */
+    color: white; /* White text color */
+    font-size: 36px; /* Increased font size */
+}
+
+.icon-bar a:hover {
+    background-color: #000; /* Add a hover color */
+}
+
+.active {
+    background-color: #000000; /* Add an active/current color */
+}
 .jumbotron {
   background-color: #ACEBB3;
   border-style: solid;
   border-width: 10px;
   margin-top: 200px;
+  margin-right: 70px;
+  margin-left: 70px;
 }
 
 .jumbotron p {
@@ -232,6 +265,7 @@ margin-left: 250px;
   border-color: #000000;
   color: #000000;
   font: bold;
+  padding: 15px 40px;
 }
 
 
