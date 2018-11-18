@@ -29,7 +29,7 @@ $("#submit-chat").on("click", function (event) {
     //restate the newMessage to give it's a value
     newMessage = PlayerName + " : " + messages;
 
-    //update each chat messages into teh database along with the time it was added
+    //update each chat messages into the database along with the time it was added
     database.ref("/chat").update({
         message: newMessage,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
