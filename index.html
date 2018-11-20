@@ -42,6 +42,21 @@
             <div class="col-lg-2"></div>
         </div>
     </div>
+    <div id="map"></div>
+    <div id="right-panel">
+        <h2>Results</h2>
+        <button id="find-food">Find Restaurants</button>
+        <button id="find-bars">Find Bars</button>
+        <button id="find-gyms">Find Gym</button>
+        <button id="find-parks">Find Parks</button>
+        <ul id="places"></ul>
+        <button id="more">More results</button>
+      </div>
+    <a href="#" id="showMyLocation">Places Near Me?</a>
+    <div id="location">Postal Address</div>
+    <div id="zipcode">Zip Code</div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjpl5Ka-oPf0xWLsN1kXq8qJjOUnET4nk&libraries=geometry,places,visualization&callback=initMap"
+    async defer></script>
 </body>
 <script src="assets/javascript/app.js"></script>
 
