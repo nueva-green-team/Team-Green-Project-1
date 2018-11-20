@@ -62,8 +62,10 @@ var usersArray = [
     ["Person_6", 42.059, -87.675]
 ];
 var map, infoWindow;
-var latVar = 41.85;
-var lngVar = -87.64;
+// Do I still need these? 
+var latVar = 0;
+var lngVar = 0;
+// --------------------------
 var currentLat = 0, currentLng = 0;
 
 function initMap() {
@@ -106,7 +108,6 @@ var getDistance = function() {
         sortedArray[z] = new Array(2);
     }
 
-    // Person 2, Person 4, Person 3, Person 1
     for (y = 0; y < usersArray.length; y++) {
         var earthRad = 6378137;
         var dLat = rad(usersArray[y][1] - currentLat);
