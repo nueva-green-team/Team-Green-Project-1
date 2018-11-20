@@ -49,8 +49,9 @@ database.ref("/chat").orderByChild("dateAdded").limitToLast(1).on("value", funct
 
 // Maps stuff
 
-// When I wrote this, only God and I understood what I was doing
-// Now, God only knows
+// no comments for you
+// it was hard to write
+// so it should be hard to read
 
 var usersArray = [
     ["Person_1", 42.064, -87.690],
