@@ -45,10 +45,25 @@ database.ref("/chat").orderByChild("dateAdded").limitToLast(1).on("value", funct
     $("#chat-window").append("</br>" + snapshot.val().message + "</br>");
 });
 
+
+
 // Maps stuff
+
+// When I wrote this, only God and I understood what I was doing
+// Now, God only knows
+
+var usersArray = [
+    ["Person_1", 42.064, -87.690],
+    ["Person_2", 42.053, -87.679],
+    ["Person_3", 42.048, -87.699],
+    ["Person_4", 42.027, -87.676],
+    ["Person_5", 42.000, -87.000],
+    ["Person_6", 42.059, -87.675]
+];
 var map, infoWindow;
 var latVar = 41.85;
 var lngVar = -87.64;
+var currentLat = 0, currentLng = 0;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {center: {lat: latVar, lng: lngVar}, zoom: 13});
@@ -62,10 +77,14 @@ function initMap() {
                 lng: position.coords.longitude
             };
 
+            currentLat = pos.lat;
+            currentLng = pos.lng;
+
             infoWindow.setPosition(pos);
             infoWindow.setContent("Location found.");
             infoWindow.open(map);
             map.setCenter(pos);
+            getDistance();
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -73,6 +92,45 @@ function initMap() {
         handleLocationError(false, infoWindow, map.getCenter());
     }
 }
+
+// Sort users based on distance from current location
+var rad = function(x) {
+    return x * Math.PI / 180;
+};
+
+var getDistance = function() {
+    var sortedArray = new Array(usersArray.length);
+
+    for (var z = 0; z < sortedArray.length; z++) {
+        sortedArray[z] = new Array(2);
+    }
+
+    // Person 2, Person 4, Person 3, Person 1
+    for (y = 0; y < usersArray.length; y++) {
+        var earthRad = 6378137;
+        var dLat = rad(usersArray[y][1] - currentLat);
+        var dLng = rad(usersArray[y][2] - currentLng);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + 
+            Math.cos(rad(currentLat)) * Math.cos(rad(usersArray[y][1])) *
+            Math.sin(dLng / 2) * Math.sin(dLng / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = (earthRad * c).toFixed(3);
+
+        sortedArray[y][0] = usersArray[y][0];
+        sortedArray[y][1] = d;
+
+        // console.log(d);
+    }
+
+    sortedArray.sort(function(a, b) {
+        return a[1] - b[1]
+    });
+    
+    console.log("V- Sorted Array -V");
+    console.log(sortedArray);
+}
+
+// getDistance();
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
