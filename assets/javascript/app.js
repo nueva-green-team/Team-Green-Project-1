@@ -45,6 +45,16 @@ database.ref("/chat").orderByChild("dateAdded").limitToLast(1).on("value", funct
     $("#chat-window").append("</br>" + snapshot.val().message + "</br>");
 });
 
+// Adding users to the database as a child of "users"
+$("#testAddUser").on("click", function(event) {
+    database.ref("/users").push({
+        username: "TestUsername1",
+        password: "icantdealwithencription",
+        lastKnownLat: currentLat.toFixed(3),
+        lastKnownLng: currentLng.toFixed(3)
+    })
+});
+
 
 
 // Maps stuff
@@ -130,8 +140,9 @@ var getDistance = function() {
     
     console.log("V- Sorted Array -V");
     console.log(sortedArray);
-}
 
+    displayUsers(sortedArray);
+}
 // getDistance();
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
