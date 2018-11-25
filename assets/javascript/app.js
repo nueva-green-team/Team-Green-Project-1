@@ -33,7 +33,7 @@ $("#submit-chat").on("click", function (event) {
     //restate the newMessage to give it's a value
     newMessage = PlayerName + " : " + messages;
 
-    //update each chat messages into teh database along with the time it was added
+    //update each chat messages into the database along with the time it was added
     database.ref("/chat").update({
         message: newMessage,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
@@ -150,3 +150,17 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setContent(browserHasGeolocation ? "Error: The Geolocation service failed" : "Error: Your browser doesn\'t support geolocation");
     infoWindow.open(map);
 }
+// for the image grid layout
+function getRandomSize(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+  }
+  
+  var allImages = "";
+  
+  for (var i = 0; i < 25; i++) {
+    var width = getRandomSize(200, 400);
+    var height =  getRandomSize(200, 400);
+    allImages += '<img src="https://placekitten.com/'+width+'/'+height+'" alt="pretty kitty">';
+  }
+  
+  $('#photos').append(allImages);
