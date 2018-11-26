@@ -1,7 +1,7 @@
 /*
     Maps API key: AIzaSyD6v6JSJAT6RMX48zZWLVj4A1dfktUdS54
 */
-
+console.log("connected")
 //Set Cloudinary cloud name
 cloudinary.setCloudName('djzrsujql');
 //Cloudinary Upload Widget Implementation
