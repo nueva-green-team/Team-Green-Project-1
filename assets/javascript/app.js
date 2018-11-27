@@ -2,12 +2,27 @@
 cloudinary.setCloudName('djzrsujql');
 //Cloudinary Upload Widget Implementation
 document.getElementById("upload_widget_opener").addEventListener("click", function () {
-    cloudinary.openUploadWidget({ cloud_name: 'djzrsujql', upload_preset: 'pa9uueiy', cropping: 'server', folder: 'MeetMeHalfway' },
-        function (error, result) { console.log(error, result) });
+  cloudinary.openUploadWidget({ cloud_name: 'djzrsujql', upload_preset: 'pa9uueiy', cropping: 'server', folder: 'MeetMeHalfway' },
+    function (error, result) { console.log(error, result) });
 }, false);
 
 // for the image grid layout
 function getRandomSize(min, max) {
+<<<<<<< HEAD
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+var allImages = "";
+
+for (var i = 0; i < 25; i++) {
+  var width = getRandomSize(200, 400);
+  var height = getRandomSize(200, 400);
+  allImages += '<img src="https://placekitten.com/' + width + '/' + height + '" alt="pretty kitty">';
+}
+
+$('#photos').append(allImages);
+$("#profile-pic").html();
+=======
     return Math.round(Math.random() * (max - min) + min);
   }
   
@@ -41,3 +56,4 @@ function getRandomSize(min, max) {
 =======
   $("#profile-pic").html()
 >>>>>>> f9e37a131a6d94ebada4fa00fc6960aec19f77b0
+>>>>>>> c382da004d32922edbc923afbe259f65d0577589
