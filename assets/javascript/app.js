@@ -20,6 +20,7 @@ function getRandomSize(min, max) {
   }
   
   $('#photos').append(allImages);
+<<<<<<< HEAD
 
 
 // Firebase for Profile Data
@@ -37,3 +38,6 @@ function getRandomSize(min, max) {
   };
   firebase.initializeApp(config);
 </script>
+=======
+  $("#profile-pic").html()
+>>>>>>> f9e37a131a6d94ebada4fa00fc6960aec19f77b0
