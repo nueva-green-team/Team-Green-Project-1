@@ -14,7 +14,16 @@ var config = {
   var database = firebase.database();
 
   // On click for submitting profile information
+  $("#add-user-btn").on("click", function(event) {
+    event.preventDefault();
+
     // Grabs user inputs
+    var name = $("#full-name-input").val().trim();
+    var age = $("#age-input").val().trim();
+    var sex = $("sex-input").val().trim();
+    var bio = $("bio-input").val().trim();
+  })
+
     // Create local "temp" object for holding profile data
     // Upload profile data to the database
     // Console Log
