@@ -80,15 +80,15 @@ var database = firebase.database();
   $("#profile-pic").html()
   $('#photos').append(allImages);
   //Facebook Login
-  FB.getLoginStatus(function (response) {
-    statusChangeCallback(response);
-    console.log(response);
-});
-function checkLoginState() {
-    FB.getLoginStatus(function (response) {
-        statusChangeCallback(response);
-    });
-};
+//   FB.getLoginStatus(function (response) {
+//     statusChangeCallback(response);
+//     console.log(response);
+// });
+// function checkLoginState() {
+//     FB.getLoginStatus(function (response) {
+//         statusChangeCallback(response);
+//     });
+// };
 firebase.auth().signInWithPopup(provider).then(function(result) {
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     var token = result.credential.accessToken;
