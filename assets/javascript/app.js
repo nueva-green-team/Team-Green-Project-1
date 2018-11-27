@@ -20,3 +20,20 @@ function getRandomSize(min, max) {
   }
   
   $('#photos').append(allImages);
+
+
+// Firebase for Profile Data
+
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAvqRR0ccz8wJpmtjNKUZXScqfWTNscbBM",
+    authDomain: "halfway-profile-data.firebaseapp.com",
+    databaseURL: "https://halfway-profile-data.firebaseio.com",
+    projectId: "halfway-profile-data",
+    storageBucket: "halfway-profile-data.appspot.com",
+    messagingSenderId: "216446343066"
+  };
+  firebase.initializeApp(config);
+</script>
