@@ -35,7 +35,8 @@ var config = {
   database.ref().push(newUser);
       
   })
-    // Grabs user inputs
+   
+
     // Create local "temp" object for holding profile data
     // Upload profile data to the database
     // Console Log
