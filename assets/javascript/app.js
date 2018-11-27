@@ -20,3 +20,10 @@ function getRandomSize(min, max) {
   }
   
   $('#photos').append(allImages);
+
+  // added cloudinary photos with angle//
+  cloudinary.imageTag('front_face.png', {secure: true, transformation: [
+    {width: 150, height: 150, gravity: "face", radius: 20, effect: "sepia", crop: "thumb"},
+    {overlay: new cloudinary.Layer().publicId("cloudinary_icon"), gravity: "south_east", x: 5, y: 5, width: 50, opacity: 60, effect: "brightness:200"},
+    {angle: 10}
+    ]}).toHtml();
