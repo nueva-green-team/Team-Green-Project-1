@@ -20,7 +20,24 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
 //   }
 
 //   $('#photos').append(allImages);
-
+function getRandomSize(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+  }
+  
+  var allImages = "";
+  
+  for (var i = 0; i < 25; i++) {
+    var width = getRandomSize(200, 400);
+    var height =  getRandomSize(200, 400);
+    allImages += '<img src="https://placekitten.com/'+width+'/'+height+'" alt="pretty kitty">';
+  }
+  $('#photos').append(allImages);
+  // added cloudinary photos with angle//
+  cloudinary.imageTag('front_face.png', {secure: true, transformation: [
+    {width: 150, height: 150, gravity: "face", radius: 20, effect: "sepia", crop: "thumb"},
+    {overlay: new cloudinary.Layer().publicId("cloudinary_icon"), gravity: "south_east", x: 5, y: 5, width: 50, opacity: 60, effect: "brightness:200"},
+    {angle: 10}
+    ]}).toHtml();
 
 // Firebase for Profile Data
 // Initialize Firebase
@@ -61,3 +78,19 @@ var database = firebase.database();
 //     });
 // });
 //Google Login
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  // On click for submitting profile information
+    // Grabs user inputs
+    // Create local "temp" object for holding profile data
+    // Upload profile data to the database
+    // Console Log
+  
+  // Create Firebase event for adding profile to the database
+    // Store everything into a variable
+  
+  // Push firebase data to appropriate Profile sections
+  $("#profile-pic").html()
+  $('#photos').append(allImages);

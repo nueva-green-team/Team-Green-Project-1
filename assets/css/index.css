@@ -196,8 +196,9 @@ text-align:right;
 } */
 
 body {
-    background-image: url("https://i.pinimg.com/originals/96/a5/26/96a526d2dfa752b5b6c4e40cf5985d8f.jpg");
-    background-repeat: no-repeat;
+  
+    background: -webkit-linear-gradient(53deg, rgb(250, 6, 0), rgb(219, 35, 187));
+    background: linear-gradient(53deg, rgb(250, 6, 0), rgb(219, 35, 187));
     background-position: center;
     background-size: cover;
     height: 100%;
@@ -227,7 +228,8 @@ body {
     background-color: #000000; /* Add an active/current color */
 }
 .jumbotron {
-  background-color: #ACEBB3;
+  background: -webkit-linear-gradient(88deg, rgb(123, 255, 139), rgb(9, 158, 163));
+  background: linear-gradient(88deg, rgb(123, 255, 139), rgb(9, 158, 163));
   border-style: solid;
   border-width: 10px;
   margin-top: 250px;
