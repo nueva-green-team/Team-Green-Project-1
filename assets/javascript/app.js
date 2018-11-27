@@ -77,20 +77,15 @@ var database = firebase.database();
 //         password: userPW
 //     });
 // });
-//Google Login
-  firebase.initializeApp(config);
-
-  var database = firebase.database();
-
-  // On click for submitting profile information
-    // Grabs user inputs
-    // Create local "temp" object for holding profile data
-    // Upload profile data to the database
-    // Console Log
-  
-  // Create Firebase event for adding profile to the database
-    // Store everything into a variable
-  
-  // Push firebase data to appropriate Profile sections
   $("#profile-pic").html()
   $('#photos').append(allImages);
+  //Facebook Login
+  FB.getLoginStatus(function (response) {
+    statusChangeCallback(response);
+    console.log(response);
+});
+function checkLoginState() {
+    FB.getLoginStatus(function (response) {
+        statusChangeCallback(response);
+    });
+};
