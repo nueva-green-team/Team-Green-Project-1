@@ -20,3 +20,4 @@ function getRandomSize(min, max) {
   }
   
   $('#photos').append(allImages);
+  $("#profile-pic").html()
