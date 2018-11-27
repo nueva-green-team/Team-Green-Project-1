@@ -1,0 +1,48 @@
+body {
+    background-image: url("https://i.pinimg.com/originals/96/a5/26/96a526d2dfa752b5b6c4e40cf5985d8f.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Amatic SC';
+    text-align: center;
+    font-size: 50px;
+    color: #000000; 
+}
+
+.jumbotron {
+    background-color: #5AC4D9;
+    border-style: solid;
+    border-width: 30px;
+    margin-top: 250px;
+    margin-right: 70px;
+    margin-left: 70px;
+}
+
+.icon-bar {
+    width: 100%; /* Full-width */
+    background-color: #000000; /* Dark-grey background */
+    overflow: auto; /* Overflow due to float */
+}
+
+.icon-bar a {
+    float: right; /* Float links side by side */
+    text-align: center; /* Center-align text */
+    width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
+    padding: 12px 0; /* Some top and bottom padding */
+    transition: all 0.3s ease; /* Add transition for hover effects */
+    color: white; /* White text color */
+    font-size: 36px; /* Increased font size */
+}
+
+.icon-bar a:hover {
+    background-color: #000; /* Add a hover color */
+}
+
+.active {
+    background-color: #000000; /* Add an active/current color */
+}

@@ -6,57 +6,35 @@
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Sedgwick+Ave" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<div class="icon-bar">
+    <a href="#"><i class="fa fa-user"></i></a>
+    <a href="#"><i class="fa fa-phone"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-facebook"></i></a>
+</div>
 
 <body>
-    <!-- Stuff here -->
-    <a href="#" id="upload_widget_opener">Upload Profile Image</a>
-
-    <div class="container" id="quick-chat">
-        <br><br><br>
-        <div class="row">
-
-            <div class="col-lg-2"></div>
-
-            <div class="col-lg-8">
-                <br><br><br>
-                <div class="row">
-                    <!-- display chats -->
-                    <div class="col-lg-12" id="chat-window"></div>
-                </div>
-                <!-- chat input -->
-                <br><br><br>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form>
-                            <input type="text" id="chat-input">
-                            <br><br>
-                            <input type="submit" id="submit-chat" value="SEND" />
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-lg-2"></div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h2 class="display-4">Meet Me Halfway</h2>
+            <p class="lead">Making dating... convenient.</p>
         </div>
     </div>
-    <div id="map"></div>
-    <div id="right-panel">
-        <h2>Results</h2>
-        <button id="find-food">Find Restaurants</button>
-        <button id="find-bars">Find Bars</button>
-        <button id="find-gyms">Find Gym</button>
-        <button id="find-parks">Find Parks</button>
-        <ul id="places"></ul>
-        <button id="more">More results</button>
-      </div>
-    <a href="#" id="showMyLocation">Places Near Me?</a>
-    <div id="location">Postal Address</div>
-    <div id="zipcode">Zip Code</div>
+    <div class="buttons">
+        <a href="Log-in.html" class="btn btn-primary btn-lg" role="button">Log-In</a>
+        <a href="sign-up.html" class="btn btn-secondary btn-lg" role="button">Sign-Up</a>
+
+    </div>
+
+    <a href="#" id="upload_widget_opener">Upload Profile Image</a>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjpl5Ka-oPf0xWLsN1kXq8qJjOUnET4nk&libraries=geometry,places,visualization&callback=initMap"
-    async defer></script>
+        async defer></script>
 </body>
 <script src="assets/javascript/app.js"></script>
 
