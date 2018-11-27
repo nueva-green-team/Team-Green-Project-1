@@ -35,14 +35,10 @@ $("#profile-pic").html();
   }
   
   $('#photos').append(allImages);
-<<<<<<< HEAD
 
 
 // Firebase for Profile Data
-
-<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-<script>
-  // Initialize Firebase
+// Initialize Firebase
   var config = {
     apiKey: "AIzaSyAvqRR0ccz8wJpmtjNKUZXScqfWTNscbBM",
     authDomain: "halfway-profile-data.firebaseapp.com",
@@ -52,8 +48,25 @@ $("#profile-pic").html();
     messagingSenderId: "216446343066"
   };
   firebase.initializeApp(config);
+<<<<<<< HEAD
+
+  var database = firebase.database();
+
+  // On click for submitting profile information
+    // Grabs user inputs
+    // Create local "temp" object for holding profile data
+    // Upload profile data to the database
+    // Console Log
+  
+  // Create Firebase event for adding profile to the database
+    // Store everything into a variable
+  
+  // Push firebase data to appropriate Profile sections
+
+=======
 </script>
 =======
   $("#profile-pic").html()
 >>>>>>> f9e37a131a6d94ebada4fa00fc6960aec19f77b0
 >>>>>>> c382da004d32922edbc923afbe259f65d0577589
+>>>>>>> d6546969da534a91271a2bedc3a6b4f933499aba
