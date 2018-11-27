@@ -8,21 +8,6 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
 
 // for the image grid layout
 function getRandomSize(min, max) {
-<<<<<<< HEAD
-  return Math.round(Math.random() * (max - min) + min);
-}
-
-var allImages = "";
-
-for (var i = 0; i < 25; i++) {
-  var width = getRandomSize(200, 400);
-  var height = getRandomSize(200, 400);
-  allImages += '<img src="https://placekitten.com/' + width + '/' + height + '" alt="pretty kitty">';
-}
-
-$('#photos').append(allImages);
-$("#profile-pic").html();
-=======
     return Math.round(Math.random() * (max - min) + min);
   }
   
@@ -35,38 +20,3 @@ $("#profile-pic").html();
   }
   
   $('#photos').append(allImages);
-
-
-// Firebase for Profile Data
-// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAvqRR0ccz8wJpmtjNKUZXScqfWTNscbBM",
-    authDomain: "halfway-profile-data.firebaseapp.com",
-    databaseURL: "https://halfway-profile-data.firebaseio.com",
-    projectId: "halfway-profile-data",
-    storageBucket: "halfway-profile-data.appspot.com",
-    messagingSenderId: "216446343066"
-  };
-  firebase.initializeApp(config);
-<<<<<<< HEAD
-
-  var database = firebase.database();
-
-  // On click for submitting profile information
-    // Grabs user inputs
-    // Create local "temp" object for holding profile data
-    // Upload profile data to the database
-    // Console Log
-  
-  // Create Firebase event for adding profile to the database
-    // Store everything into a variable
-  
-  // Push firebase data to appropriate Profile sections
-
-=======
-</script>
-=======
-  $("#profile-pic").html()
->>>>>>> f9e37a131a6d94ebada4fa00fc6960aec19f77b0
->>>>>>> c382da004d32922edbc923afbe259f65d0577589
->>>>>>> d6546969da534a91271a2bedc3a6b4f933499aba
