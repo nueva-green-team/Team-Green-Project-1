@@ -6,22 +6,6 @@ body {
     height: 100%;
 }
 
-h1 {
-    text-align: center;
-    font-family: 'Amatic SC';
-    text-align: center;
-    font-size: 50px;
-    color: #000000; 
-}
-
-.jumbotron {
-    background-color: #5AC4D9;
-    border-style: solid;
-    border-width: 30px;
-    margin-top: 250px;
-    margin-right: 70px;
-    margin-left: 70px;
-}
 .icon-bar {
     width: 100%; /* Full-width */
     background-color: #000000; /* Dark-grey background */
@@ -32,7 +16,7 @@ h1 {
     float: right; /* Float links side by side */
     text-align: center; /* Center-align text */
     width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
-    padding: 30px 0; /* Some top and bottom padding */
+    padding: 12px 0; /* Some top and bottom padding */
     transition: all 0.3s ease; /* Add transition for hover effects */
     color: white; /* White text color */
     font-size: 36px; /* Increased font size */
@@ -45,3 +29,22 @@ h1 {
 .active {
     background-color: #000000; /* Add an active/current color */
 }
+.btn-primary {
+    margin-left: 350px;
+    margin-top: 425px;
+    }
+    
+    .btn {
+      margin-left: 500px;
+      margin-right: 200px;
+      margin-top: 20px;
+      background-color: #ffffaa;
+      font-family: 'Amatic SC';
+      border-width: 5px;
+      border-color: #000000;
+      color: #000000;
+      font: bold;
+      padding: 15px 40px;
+      font-size: 40px;
+      display:inline-block;
+    }
