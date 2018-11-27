@@ -8,21 +8,6 @@ document.getElementById("upload_widget_opener").addEventListener("click", functi
 
 // for the image grid layout
 function getRandomSize(min, max) {
-<<<<<<< HEAD
-  return Math.round(Math.random() * (max - min) + min);
-}
-
-var allImages = "";
-
-for (var i = 0; i < 25; i++) {
-  var width = getRandomSize(200, 400);
-  var height = getRandomSize(200, 400);
-  allImages += '<img src="https://placekitten.com/' + width + '/' + height + '" alt="pretty kitty">';
-}
-
-$('#photos').append(allImages);
-$("#profile-pic").html();
-=======
     return Math.round(Math.random() * (max - min) + min);
   }
   
@@ -34,8 +19,17 @@ $("#profile-pic").html();
     allImages += '<img src="https://placekitten.com/'+width+'/'+height+'" alt="pretty kitty">';
   }
   
+<<<<<<< HEAD
   $('#photos').append(allImages);
 
+<<<<<<< HEAD
+  // added cloudinary photos with angle//
+  cloudinary.imageTag('front_face.png', {secure: true, transformation: [
+    {width: 150, height: 150, gravity: "face", radius: 20, effect: "sepia", crop: "thumb"},
+    {overlay: new cloudinary.Layer().publicId("cloudinary_icon"), gravity: "south_east", x: 5, y: 5, width: 50, opacity: 60, effect: "brightness:200"},
+    {angle: 10}
+    ]}).toHtml();
+=======
 
 // Firebase for Profile Data
 // Initialize Firebase
@@ -70,3 +64,7 @@ $("#profile-pic").html();
 >>>>>>> f9e37a131a6d94ebada4fa00fc6960aec19f77b0
 >>>>>>> c382da004d32922edbc923afbe259f65d0577589
 >>>>>>> d6546969da534a91271a2bedc3a6b4f933499aba
+>>>>>>> e72e9a867a42a1ab5592aa296b237157b62c8baa
+=======
+  $('#photos').append(allImages);
+>>>>>>> 4bcbe409b7d9ccb13b78c4ec98065ed0c3d01975
