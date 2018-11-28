@@ -87,3 +87,4 @@ profileAboutTd.text(arrayOfObjects[j].about);
 
  // Append new Row to the HTML Table
  $('.table').append(newRow);
+})
