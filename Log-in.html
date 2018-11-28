@@ -111,8 +111,7 @@
 
                             //The image link
                             image = response.data[0].images[0].source;
-                            console.log(image);
-                            $("#status").append(image);
+                            console.log(JSON.stringify(response.data[0].images[0].source));
                         });
                     }
                 }
