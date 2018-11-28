@@ -1,3 +1,13 @@
+body {
+  
+  background: -webkit-linear-gradient(53deg, rgb(250, 6, 0), rgb(219, 35, 187));
+  background: linear-gradient(53deg, rgb(250, 6, 0), rgb(219, 35, 187));
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+
+}
+
 .icon-bar {
   width: 100%; /* Full-width */
   background-color: #000000; /* Dark-grey background */
