@@ -57,29 +57,80 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
-var provider = new firebase.auth.FacebookAuthProvider();
-//   $("#add-user-btn").on("click", function (event) {
-//     //prevent refresh
-//     event.preventDefault();
-//     console.log(this);
-//     //Grabs input and empties
-//     userEmail = $("#email-input").val().trim();
-//     $("#email-input").val("");
-//     userAge = $("#age-input").val().trim();
-//     $("#age-input").val("");
-//     userName = $("#username-input").val().trim();
-//     $("#name-input").val("");
-//     userPW = $("#pw-input").val().trim();
-//     $("#password-input").val("");
+        // This is called with the results from from FB.getLoginStatus().
+        function statusChangeCallback(response) {
+          console.log('statusChangeCallback');
+          console.log(response);
+          // The response object is returned with a status field that lets the
+          // app know the current login status of the person.
+          // Full docs on the response object can be found in the documentation
+          // for FB.getLoginStatus().
+          if (response.status === 'connected') {
+              // Logged into your app and Facebook.
+              testAPI();
+          } else {
+              // The person is not logged into your app or we are unable to tell.
+              document.getElementById('status').innerHTML = 'Please log ' +
+                  'into this app.';
+          }
+      }
 
-//     //Update info in database
-//     database.ref("/users").update({
-//         name: userName,
-//         age:  userAge,
-//         email: userEmail,
-//         password: userPW
-//     });
-// });
+      // This function is called when someone finishes with the Login
+      // Button.  See the onlogin handler attached to it in the sample
+      // code below.
+      function checkLoginState() {
+          FB.getLoginStatus(function (response) {
+              statusChangeCallback(response);
+          });
+      }
+
+      window.fbAsyncInit = function () {
+          FB.init({
+              appId: '371384870299199',
+              cookie: true,  // enable cookies to allow the server to access 
+              // the session
+              xfbml: true,  // parse social plugins on this page
+              version: 'v3.2' // use graph api version 2.8
+          });
+
+          // Now that we've initialized the JavaScript SDK, we call 
+          // FB.getLoginStatus().  This function gets the state of the
+          // person visiting this page and can return one of three states to
+          // the callback you provide.  They can be:
+          //
+          // 1. Logged into your app ('connected')
+          // 2. Logged into Facebook, but not your app ('not_authorized')
+          // 3. Not logged into Facebook and can't tell if they are logged into
+          //    your app or not.
+          //
+          // These three cases are handled in the callback function.
+
+          FB.getLoginStatus(function (response) {
+              statusChangeCallback(response);
+          });
+
+      };
+
+      // Load the SDK asynchronously
+      (function (d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      // Here we run a very simple test of the Graph API after login is
+      // successful.  See statusChangeCallback() for when this call is made.
+      function testAPI() {
+          console.log('Welcome!  Fetching your information.... ');
+          FB.api('/me', function (response) {
+              console.log('Successful login for: ' + response.name);
+              document.getElementById('status').innerHTML =
+                  'Thanks for logging in, ' + response.name + '!';
+          });
+      }
+var provider = new firebase.auth.FacebookAuthProvider();
 $("#profile-pic").html()
 $('#photos').append(allImages);
 //Facebook Login
@@ -89,13 +140,13 @@ firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (
   var errorMessage = error.message;
   // ...
 });
-firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
   // ...
 });
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // User is signed in.
     var displayName = user.displayName;
@@ -127,6 +178,61 @@ firebase.auth().signInWithPopup(provider).then(function (result) {
   // The firebase.auth.AuthCredential type that was used.
   var credential = error.credential;
   // ...
+});
+
+// Step 1.
+// User tries to sign in to Facebook.
+auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).catch(function (error) {
+  // An error happened.
+  if (error.code === 'auth/account-exists-with-different-credential') {
+    // Step 2.
+    // User's email already exists.
+    // The pending Facebook credential.
+    var pendingCred = error.credential;
+    // The provider account's email address.
+    var email = error.email;
+    // Get sign-in methods for this email.
+    auth.fetchSignInMethodsForEmail(email).then(function (methods) {
+      // Step 3.
+      // If the user has several sign-in methods,
+      // the first method in the list will be the "recommended" method to use.
+      if (methods[0] === 'password') {
+        // Asks the user his password.
+        // In real scenario, you should handle this asynchronously.
+        var password = promptUserForPassword(); // TODO: implement promptUserForPassword.
+        auth.signInWithEmailAndPassword(email, password).then(function (user) {
+          // Step 4a.
+          return user.link(pendingCred);
+        }).then(function () {
+          // Facebook account successfully linked to the existing Firebase user.
+          goToApp();
+        });
+        return;
+      }
+      // All the other cases are external providers.
+      // Construct provider object for that provider.
+      // TODO: implement getProviderForProviderId.
+      var provider = getProviderForProviderId(methods[0]);
+      // At this point, you should let the user know that he already has an account
+      // but with a different provider, and let him validate the fact he wants to
+      // sign in with this provider.
+      // Sign in to provider. Note: browsers usually block popup triggered asynchronously,
+      // so in real scenario you should ask the user to click on a "continue" button
+      // that will trigger the signInWithPopup.
+      auth.signInWithPopup(provider).then(function (result) {
+        // Remember that the user may have signed in with an account that has a different email
+        // address than the first one. This can happen as Firebase doesn't control the provider's
+        // sign in flow and the user is free to login using whichever account he owns.
+        // Step 4b.
+        // Link to Facebook credential.
+        // As we have access to the pending credential, we can directly call the link method.
+        result.user.linkAndRetrieveDataWithCredential(pendingCred).then(function (usercred) {
+          // Facebook account successfully linked to the existing Firebase user.
+          goToApp();
+        });
+      });
+    });
+  }
 });
 firebase.auth().signOut().then(function () {
   // Sign-out successful.
