@@ -1,10 +1,15 @@
 body {
-    background-image: url("https://i.pinimg.com/originals/96/a5/26/96a526d2dfa752b5b6c4e40cf5985d8f.jpg");
-    background-repeat: no-repeat;
+    background: #f7ff00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #db36a4, #f7ff00);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #db36a4, #f7ff00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-position: center;
     background-size: cover;
     height: 100%;
-}
+  }
+  .uploadimage {
+      color: black; 
+
+  }
 
 h1 {
     text-align: center;
@@ -15,14 +20,20 @@ h1 {
 }
 
 .jumbotron {
-    background-color: #5AC4D9;
+    background: #00c3ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffff1c, #00c3ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffff1c, #00c3ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-style: solid;
     border-width: 30px;
-    margin-top: 250px;
+    margin-top: 140px;
     margin-right: 70px;
     margin-left: 70px;
 }
-
+.btn {
+    background: #A770EF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 .icon-bar {
     width: 100%; /* Full-width */
     background-color: #000000; /* Dark-grey background */

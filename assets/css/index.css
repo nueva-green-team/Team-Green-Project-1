@@ -194,14 +194,13 @@ width:100%;
 margin-top:-20px;
 text-align:right;
 } */
-
 body {
-  
-    background: -webkit-linear-gradient(53deg, rgb(250, 6, 0), rgb(219, 35, 187));
-    background: linear-gradient(53deg, rgb(250, 6, 0), rgb(219, 35, 187));
-    background-position: center;
-    background-size: cover;
-    height: 100%;
+  background: #f7ff00;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #db36a4, #f7ff00);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #db36a4, #f7ff00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-position: center;
+  background-size: cover;
+  height: 100%;
 }
 
 .icon-bar {
@@ -228,13 +227,14 @@ body {
     background-color: #000000; /* Add an active/current color */
 }
 .jumbotron {
-  background: -webkit-linear-gradient(88deg, rgb(123, 255, 139), rgb(9, 158, 163));
-  background: linear-gradient(88deg, rgb(123, 255, 139), rgb(9, 158, 163));
-  border-style: solid;
+  background: #00c3ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ffff1c, #00c3ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ffff1c, #00c3ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border: solid;
   border-width: 10px;
-  margin-top: 250px;
-  margin-right: 70px;
-  margin-left: 70px;
+  margin-top: 130px;
+  margin-right: 200px;
+  margin-left: 200px;
 }
 
 .jumbotron p {
@@ -253,17 +253,10 @@ body {
   text-align: center;
 }
 
-
-.btn-primary {
-margin-left: 350px;
-margin-top: 425px;
-}
-
-.btn {
-  margin-left: 500px;
-  margin-right: 200px;
-  margin-top: 20px;
-  background-color: #ffffaa;
+.btn , .btn-primary{
+  background: #A770EF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: 'Amatic SC';
   border-width: 5px;
   border-color: #000000;
@@ -271,7 +264,19 @@ margin-top: 425px;
   font: bold;
   padding: 15px 40px;
   font-size: 40px;
-  display:inline-block;
+  display: inline-block, center;
+  margin-left: 360px;
+  
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
 }
 
 
