@@ -194,7 +194,6 @@ width:100%;
 margin-top:-20px;
 text-align:right;
 } */
-
 body {
   background: #f7ff00;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #db36a4, #f7ff00);  /* Chrome 10-25, Safari 5.1-6 */
@@ -231,7 +230,7 @@ body {
   background: #00c3ff;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #ffff1c, #00c3ff);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #ffff1c, #00c3ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-style: solid;
+  border: solid;
   border-width: 10px;
   margin-top: 130px;
   margin-right: 200px;
