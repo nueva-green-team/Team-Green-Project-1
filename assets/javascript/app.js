@@ -428,7 +428,7 @@ $("#btn").on("click", function () {
 
     for (var i = 0; i < snapshot.length; i++) {
       if (myLocation = snapshot.child("players").child(i).val().city)
-        $("#photos").html();
+        $("#photos").html(`<img src=${snapshot.pic} / >`);
     }
   });
 });
