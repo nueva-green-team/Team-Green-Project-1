@@ -1,7 +1,7 @@
   body {
-  
-    background: -webkit-linear-gradient(53deg, rgb(250, 6, 0), rgb(219, 35, 187));
-    background: linear-gradient(53deg, rgb(250, 6, 0), rgb(219, 35, 187));
+    background: #f7ff00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #db36a4, #f7ff00);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #db36a4, #f7ff00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-position: center;
     background-size: 100%;
     height: 100%;
@@ -33,7 +33,7 @@
   background-color: #000000; /* Add an active/current color */
 }
 .jumbotron {
-  width: 1000px;
+  width: 700px;
   height: 570px;
   background-color: #ACEBB3;
   border-style: solid;
