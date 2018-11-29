@@ -275,7 +275,7 @@ $("#like-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_1_Choice = $("#like-btn").val();
+  user_1_Choice = "yes";
   console.log(user_1_Choice);
 
   database.ref().once('value').then(function (snapshot) {
@@ -300,7 +300,7 @@ $("#dislike-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_1_Choice = $("#dislike-btn").val();
+  user_1_Choice = "no";
   console.log(user_1_Choice);
 
   database.ref().once('value').then(function (snapshot) {
@@ -325,7 +325,7 @@ $("#like-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_2_Choice = $("#like-btn").val();
+  user_2_Choice = "yes";
   console.log(user_2_Choice);
 
   database.ref().once('value').then(function (snapshot) {
@@ -349,7 +349,7 @@ $("#dislike-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_2_Choice = $("#dislike-btn").val();
+  user_2_Choice = "no";
   console.log(user_2_Choice);
 
   database.ref().once('value').then(function (snapshot) {
