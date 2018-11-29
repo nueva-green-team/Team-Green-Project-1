@@ -79,10 +79,9 @@ function profileInfo() {
   FB.api(
     '/me',
     'GET',
-    { "fields": "id,name,age_range,gender,profile_pic,location" },
+    { "fields": "id,name,picture" },
     function (response) {
       console.log(JSON.stringify(response));
-      console.log(response.age_range);
       console.log(response.profile_pic);
     }
   );
