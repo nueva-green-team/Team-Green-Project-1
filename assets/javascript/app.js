@@ -73,6 +73,7 @@ function testAPI() {
   });
 };
 //Get profile pic
+var profilePic = "";
 function profileInfo() {
   console.log("incoming profile info");
   FB.api(
@@ -85,6 +86,9 @@ function profileInfo() {
       userName = response.name;
       $("#profile-pic").html(`<img src=${response.picture.data.url} / >`);
       $("#profile-name").html(response.name);
+      profilePic = response.picture.data.url;
+
+
 
     }
   );
@@ -273,6 +277,7 @@ $("#like-btn").on("click", function () {
     turns++;
     database.ref("players/1").update({
       choice: user_1_Choice,
+      pic: profilePic
     });
     database.ref().update({
       turn: turns
@@ -291,6 +296,7 @@ $("#like-btn").on("click", function () {
     turns++;
     database.ref("players/2").update({
       choice: user_2_Choice,
+      pic: profilePic
     });
     database.ref().update({
       turn: turns,
@@ -300,6 +306,6 @@ $("#like-btn").on("click", function () {
 //Photo Collage
 $("#submit-user-password-btn").on("click", function () {
   for (var i = 0; i < response.length; i++) {
-    $("#photos").html()
+    $("#photos").html();
   }
 })
