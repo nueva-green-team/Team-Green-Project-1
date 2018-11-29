@@ -309,7 +309,7 @@ $("#like-btn").on("click", function () {
 });
 //Photo Collage
 $("#btn").on("click", function () {
-  database.ref("/players").once("value").then(function(snapshot){
+  database.ref("/players").on("value").then(function(snapshot){
   console.log(snapshot);
   for (var i = 0; i < response.length; i++) {
     $("#photos").html();
