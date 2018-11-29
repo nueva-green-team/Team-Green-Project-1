@@ -341,24 +341,18 @@ function initMap() {
         };
 
   });
-//geocoding
+  //geocoding
 function geocodeLatLng(geocoder) {
-    var input = document.getElementById('latlng').value;
-    var latlngStr = input.split(',', 2);
-    var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
-    geocoder.geocode({'location': latlng}, function(results, status) {
-      if (status === 'OK') {
-        if (results[0]) {
-          console.log(results[3].formatted_address);
-          console.log(results.address_components[0].long_name);
-          console.log(results.address_components[2].long_name);
-        } else {
-          console.log('No results found');
-        }
-      } else {
-        console.log('Geocoder failed due to: ' + status);
-      }
-    });
-  }
+  var input = document.getElementById('latlng').value;
+  var latlngStr = input.split(',', 2);
+  var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+  geocoder.geocode({'location': latlng}, function(results, status) {
+        console.log(results[3].formatted_address);
+        console.log(results.address_components[0].long_name);
+        console.log(results.address_components[2].long_name);
+
+
+  });
+}
 }
 }
