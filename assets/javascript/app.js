@@ -85,6 +85,7 @@ function profileInfo() {
       console.log(JSON.stringify(response));
       console.log(response.picture.data.url);
       userName = response.name;
+      console.log(response.name);
       $("#profile-pic").html(`<img src=${response.picture.data.url} / >`);
       $("#profile-name").html(response.name);
       profilePic = response.picture.data.url;
@@ -280,7 +281,8 @@ $("#like-btn").on("click", function () {
     database.ref("players/1").update({
       choice: user_1_Choice,
       pic: profilePic,
-      name: userName
+      name: userName,
+      city: myLocation,
     });
     database.ref().update({
       turn: turns
@@ -300,7 +302,8 @@ $("#like-btn").on("click", function () {
     database.ref("players/2").update({
       choice: user_2_Choice,
       pic: profilePic,
-      name: userName
+      name: userName,
+      city: myLocation
     });
     database.ref().update({
       turn: turns,
@@ -367,6 +370,7 @@ function codeLatLng(lat, lng) {
         //location saving
         myLocation = results[4].formatted_address;
         console.log(results[4].formatted_address);
+
 
 
       } else {
