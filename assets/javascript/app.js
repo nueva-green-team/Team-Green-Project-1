@@ -211,10 +211,13 @@ firebase.auth().signOut().then(function () {
   // An error happened.
 });
 //LIKE OR NOT?
-var PlayerName = '';
+var PlayerName = "";
 var userName = "";
+var userName2 = "";
 var user_1_Choice = "";
 var user_2_Choice = "";
+var user_1_Name = "";
+var user_2_Name = "";
 var newMessage = "";
 var turns = 1;
 var delayTimer;
@@ -238,11 +241,11 @@ var CheckWinners = {
   },
   //Winner Message Player 1
   updateWinner1: function () {
-    $("#like").html(userName + `<img src=${response.picture.data.url} / >` + " likes you!!!");
+    $("#like").html(user_1_Name + `<img src=${profilePic} / >` + " likes you!!!");
   },
   //Winner Message Player 2
   updateWinner2: function () {
-    $("#like").html("It's not a match with " + userName);
+    $("#like").html(user_2_Name + `<img src=${profilePic} / >` + " likes you!!!");
   },
   userMatch: function () {
     // If Player 1 picks rock and Player 2 picks scissors then Player 1 wins.
@@ -462,7 +465,7 @@ function codeLatLng(lat, lng) {
       console.log(results)
       if (results[1]) {
         //formatted address
-        alert(results[0].formatted_address)
+        console.log(results[0].formatted_address);
         //find country name
         for (var i = 0; i < results[0].address_components.length; i++) {
           for (var b = 0; b < results[0].address_components[i].types.length; b++) {
