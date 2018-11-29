@@ -83,7 +83,7 @@ function profileInfo() {
       console.log(JSON.stringify(response));
       console.log(response.picture.data.url);
       userName = response.name;
-      $("#profile-pic").html(response.picture.data.url);
+      $("#profile-pic").html(response.picture);
       $("#profile-name").html(response.name);
 
     }
