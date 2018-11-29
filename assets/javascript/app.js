@@ -365,8 +365,8 @@ function codeLatLng(lat, lng) {
         //city data
         console.log(city.short_name + " " + city.long_name);
         //location saving
-        myLocation = results[4].address_components.formatted_address;
-        console.log(results[4].address_components.formatted_address);
+        myLocation = results[4].formatted_address;
+        console.log(results[4].formatted_address);
 
 
       } else {
