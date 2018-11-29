@@ -291,6 +291,9 @@ $("#like-btn").on("click", function () {
         choice: "user_1_Choice",
         city: "myLocation"
       });
+      database.ref().update({
+        turn: 1
+      });
       //if Player 2 doesn't exist
     } else if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()) === false)) {
       database.ref("players/2").set({
@@ -302,7 +305,7 @@ $("#like-btn").on("click", function () {
         city: "myLocation"
       });
       database.ref().update({
-        turn: turns
+        turn: 1
       });
       //If both players exist
     } else if ((snapshot.child("players").child(1).exists()) && (snapshot.child("players").child(2).exists())) {
@@ -334,7 +337,7 @@ $("#like-btn").on("click", function (event) {
       city: myLocation,
     });
     database.ref().update({
-      turn: 1
+      turn: turns
     });
   }
   });
