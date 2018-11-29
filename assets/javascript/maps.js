@@ -141,6 +141,8 @@ function initMap() {
             infoWindow.setContent("Location found.");
             infoWindow.open(map);
             map.setCenter(pos);
+            console.log(pos);
+            
             //Click to search restaurants nearby
             var restaurantButton = document.getElementById('find-food');
             restaurantButton.onclick = function () {
