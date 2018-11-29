@@ -275,21 +275,21 @@ $("#like-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_1_Choice = $(this).val();
+  user_1_Choice = $("#like-btn").val();
   console.log(user_1_Choice);
 
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch	
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
-    user_1_Choice= (snapshot.child("choice").exists() ? snapshot.child("choice").val() : user_1_Choice);
+    user_1_Choice = (snapshot.child("choice").exists() ? snapshot.child("choice").val() : user_1_Choice);
+    database.ref("players/1").update({
+      name: userName,
+      pic: profilePic
+    });
     database.ref("players/1").update({
       choice: user_1_Choice,
       city: myLocation,
-      name: userName,
-      pic: profilePic
-      
-      
     });
     database.ref().update({
       turn: turns
@@ -300,21 +300,20 @@ $("#dislike-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_1_Choice = $(this).val();
+  user_1_Choice = $("#dislike-btn").val();
   console.log(user_1_Choice);
 
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch	
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
-    user_1_Choice= (snapshot.child("choice").exists() ? snapshot.child("choice").val() : user_1_Choice);
+    database.ref("players/1").update({
+      name: userName,
+      pic: profilePic
+    });
     database.ref("players/1").update({
       choice: user_1_Choice,
       city: myLocation,
-      name: userName,
-      pic: profilePic
-      
-      
     });
     database.ref().update({
       turn: turns
@@ -326,7 +325,7 @@ $("#like-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_2_Choice = $(this).val();
+  user_2_Choice = $("#like-btn").val();
   console.log(user_2_Choice);
 
   database.ref().once('value').then(function (snapshot) {
@@ -334,10 +333,36 @@ $("#like-btn").on("click", function (event) {
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
     database.ref("players/2").update({
-      choice: user_2_Choice,
-      pic: profilePic,
       name: userName,
       city: myLocation
+    });
+    database.ref("players/2").update({
+      choice: user_2_Choice,
+      pic: profilePic
+    });
+    database.ref().update({
+      turn: turns,
+    });
+  });
+});
+$("#dislike-btn").on("click", function (event) {
+  //prevent refresh
+  event.preventDefault();
+  //Grabs player choice
+  user_2_Choice = $("#dislike-btn").val();
+  console.log(user_2_Choice);
+
+  database.ref().once('value').then(function (snapshot) {
+    //Turn Switch		
+    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
+    turns++;
+    database.ref("players/2").update({
+      name: userName,
+      city: myLocation
+    });
+    database.ref("players/2").update({
+      choice: user_2_Choice,
+      pic: profilePic
     });
     database.ref().update({
       turn: turns,
