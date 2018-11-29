@@ -277,6 +277,7 @@ $("#like-btn").on("click", function (event) {
   //Grabs player choice
   user_1_Choice = "yes";
   console.log(user_1_Choice);
+  console.log(myLocation);
 
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch	
