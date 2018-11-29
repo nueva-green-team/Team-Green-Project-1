@@ -284,23 +284,6 @@ database.ref().on("value", function (snapshot) {
     //Both browers will show...
     //when any player disconnect from the game
     playerDisconnect();
-    //Player 1's browser at their turn
-    if ((PlayerName == snapshot.child("players").child(1).val().name) && (databaseTurn == 1)) {
-
-    }
-    //Player 1's browser at Player 2's turn
-    if ((PlayerName == snapshot.child("players").child(1).val().name) && (databaseTurn == 2)) {
-
-    }
-
-    //Player 2's browser at Player 1's turn
-    if ((PlayerName == snapshot.child("players").child(2).val().name) && (databaseTurn == 1)) {
-
-    }
-    //Player 2's browser at their turn
-    if ((PlayerName == snapshot.child("players").child(2).val().name) && (databaseTurn == 2)) {
-
-    }
     //Both player's browser at turn 3
     var databaseTurn = snapshot.child("turn").val();
     if (databaseTurn == 3 && IsGameResetting == false) {
@@ -322,13 +305,6 @@ $("#like-btn").on("click", function () {
   //Change html to Player name
   PlayerName = userName;
   console.log(userName);
-
-  // Read snapshot when Player adds name
-  database.ref().once('value').then(function (snapshot) {
-    if ((snapshot.child("players").child(1).exists()) && (snapshot.child("players").child(2).exists())) {
-      console.log("Is it A MATCH?!?!");
-    }
-  });
 });
 $("#dislike-btn").on("click", function () {
   //Grab Player name input 
