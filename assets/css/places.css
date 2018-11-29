@@ -152,14 +152,14 @@ button {
 	background-color: white;
 	color: black;
   font-size: 15px;
-  margin-top: -30px;
+  margin-top: 90px;
 	
 }
 #chat-input{
-  width: 800px;
-  height: 90px;
+  width: 730px;
+  height: 70px;
   color: #363234;
-  border: 15px solid black;
+  border: 12px solid black;
   
 }
 
