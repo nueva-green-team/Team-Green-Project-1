@@ -342,7 +342,7 @@ function initMap() {
 
   });
 //geocoding
-function geocodeLatLng(geocoder, map) {
+function geocodeLatLng(geocoder) {
     var input = document.getElementById('latlng').value;
     var latlngStr = input.split(',', 2);
     var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};

@@ -47,3 +47,6 @@ body {
 #map {
     visibility: hidden;
 }
+#floating-panel {
+    visibility: hidden;
+}
