@@ -17,14 +17,14 @@
     <a href="places.html"><i class="fa fa-map"></i></a>
     <a href="find-people.html"><i class="fa fa-search"></i></a>
     <a href="profile.html"><i class="fa fa-user"></i></a>
-    <a href="index.html"><i class="fa fa-home"></i></a>  
-  </div>
+    <a href="index.html"><i class="fa fa-home"></i></a>
+</div>
 
 <body>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Find People Near Me</h1>
-        <button id="btn" role="button">Submit</a>
+            <button id="btn" role="button">Submit</a>
         </div>
     </div>
 
@@ -32,14 +32,13 @@
 
     <div id="like"></div>
     <div id="floating-panel">
-            <input id="latlng" type="text" value="40.714224,-73.961452">
-            <input id="submit" type="button" value="Reverse Geocode">
-        </div>
-        <div id="map"></div>
-
+        <input id="latlng" type="text" value="40.714224,-73.961452">
+        <input id="submit" type="button" value="Reverse Geocode">
+    </div>
+    <div id="map"></div>
+    <script src="assets/javascript/app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjpl5Ka-oPf0xWLsN1kXq8qJjOUnET4nk&libraries=geometry,places,visualization&callback=initMap"
+        async defer></script>
 </body>
-<script src="assets/javascript/app.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjpl5Ka-oPf0xWLsN1kXq8qJjOUnET4nk&libraries=geometry,places,visualization&callback=initMap"
-async defer></script>
 
 </html>
