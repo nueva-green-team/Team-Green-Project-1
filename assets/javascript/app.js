@@ -309,50 +309,61 @@ $("#like-btn").on("click", function () {
 });
 //Photo Collage
 $("#btn").on("click", function () {
-  database.ref("/players").on("value", function(snapshot){
-  console.log(snapshot);
-  for (var i = 0; i < response.length; i++) {
-    $("#photos").html();
-  }
-});
+  database.ref("/players").on("value", function (snapshot) {
+    console.log(snapshot);
+    for (var i = 0; i < response.length; i++) {
+      $("#photos").html();
+    }
+  });
 });
 //Save location
 var geocoder;
 var pos;
 var mylocation = "";
 var map;
+var infowindow;
 var latVar = 41.85;
 var lngVar = -87.64;
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), { center: { lat: latVar, lng: lngVar }, zoom: 13 });
-  infoWindow = new google.maps.InfoWindow;
+  infowindow = new google.maps.InfoWindow;
   // Try HTML5 geoloc
   if (navigator.geolocation) {
     geocoder = new google.maps.Geocoder;
 
     document.getElementById('submit').addEventListener('click', function() {
-        geocodeLatLng(geocoder, map);
-      });
-      
-      navigator.geolocation.getCurrentPosition(function (position) {
-        pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-        };
+      geocodeLatLng(geocoder, map, infowindow);
+    });
 
-  });
-  //geocoding
-function geocodeLatLng(geocoder) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+    });
+  }
+};
+//geocoding
+function geocodeLatLng(geocoder, map, infowindow) {
   var input = document.getElementById('latlng').value;
   var latlngStr = input.split(',', 2);
-  var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+  var latlng = { lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1]) };
   geocoder.geocode({'location': latlng}, function(results, status) {
-        console.log(results[3].formatted_address);
-        console.log(results.address_components[0].long_name);
-        console.log(results.address_components[2].long_name);
-
-
+    if (status === 'OK') {
+      if (results[0]) {
+        map.setZoom(11);
+        var marker = new google.maps.Marker({
+          position: latlng,
+          map: map
+        });
+        infowindow.setContent(results[0].formatted_address);
+        infowindow.open(map, marker);
+      } else {
+        window.alert('No results found');
+      }
+    } else {
+      window.alert('Geocoder failed due to: ' + status);
+    }
   });
-}
-}
 }
