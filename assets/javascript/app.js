@@ -425,10 +425,9 @@ $("#dislike-btn").on("click", function (event) {
 $("#btn").on("click", function () {
   database.ref("players").on("value", function (snapshot) {
     console.log(snapshot);
-
-    for (var i = 0; i < snapshot.length; i++) {
-      if (myLocation = snapshot.child("players").child(i).val().city)
+      if (myLocation = snapshot.child("players").child(2).val().city){
         $("#photos").html(`<img src=${snapshot.pic} / >`);
+        console.log(snapshot.pic);
     }
   });
 });
