@@ -69,7 +69,7 @@ function testAPI() {
     console.log(JSON.stringify(response));
     console.log('Successful login for: ' + response.name);
     document.getElementById('status').innerHTML =
-      'Thanks for logging in, ' + response.name +  '!';
+      'Thanks for logging in, ' + response.name + '!';
   });
 };
 //Get profile pic
@@ -297,3 +297,9 @@ $("#like-btn").on("click", function () {
     });
   });
 });
+//Photo Collage
+$("#submit-user-password-btn").on("click", function () {
+  for (var i = 0; i < response.length; i++) {
+    $("#photos").html()
+  }
+})
