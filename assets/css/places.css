@@ -32,6 +32,8 @@ body {
   background-color: #000000; /* Add an active/current color */
 }
 #map {
+  margin-top: 100px;
+  margin-left: 30px;
   height: 400px;
   width: 800px;
 }
@@ -143,7 +145,7 @@ button {
   font-weight: 300;
 }
 #chat-window{
-	border: 15px solid black;
+	border: 10px solid black;
 	height: 450px;
 	overflow: scroll;
 	scroll-behavior: auto;
@@ -159,7 +161,7 @@ button {
   width: 730px;
   height: 70px;
   color: #363234;
-  border: 12px solid black;
+  border: 10px solid black;
   
 }
 
