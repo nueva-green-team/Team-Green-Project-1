@@ -8,6 +8,7 @@ function statusChangeCallback(response) {
   // for FB.getLoginStatus().
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
+    profileInfo();
     testAPI();
   } else {
     // The person is not logged into your app or we are unable to tell.
@@ -63,20 +64,28 @@ window.fbAsyncInit = function () {
 
 // Here we run a very simple test of the Graph API after login is
 // successful.  See statusChangeCallback() for when this call is made.
-//Get profile info
 function testAPI() {
   console.log('Welcome!  Fetching your information.... ');
+  FB.api('/me',function (response) {
+      console.log(JSON.stringify(response));
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+};
+//Get profile pic
+function profileInfo() {
+  console.log("incoming profile info");
   FB.api(
-  '/me',
-  'GET',
-  {"fields":"id,name,age_range,gender,profile_pic,location"},
-  function (response) {
-    console.log(JSON.stringify(response));
-    console.log('Successful login for: ' + response.name);
-    console.log(response.profile_pic);
-    document.getElementById('status').innerHTML =
-      'Thanks for logging in, ' + response.name + '!';
-  });
+    '/me',
+    'GET',
+    { "fields": "id,name,age_range,gender,profile_pic,location" },
+    function (response) {
+      console.log(JSON.stringify(response));
+      console.log(response.age_range);
+      console.log(response.profile_pic);
+    }
+  );
 };
 // Firebase for Profile Data
 // Initialize Firebase
