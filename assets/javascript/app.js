@@ -1,4 +1,3 @@
-var profilePic;
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
   console.log('statusChangeCallback');
@@ -83,8 +82,8 @@ function profileInfo() {
     function (response) {
       console.log(JSON.stringify(response));
       console.log(response.picture.data.url);
-      profilePic = response.picture.data.url;
-      $("#profile-pic").html(profilePic);
+      $("#profile-pic").html(response.picture.data.url);
+      $("#profile-name").html(response.name);
 
     }
   );
