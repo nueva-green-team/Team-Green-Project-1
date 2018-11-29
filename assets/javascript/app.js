@@ -334,7 +334,7 @@ $("#like-btn").on("click", function (event) {
       city: myLocation,
     });
     database.ref().update({
-      turn: turns
+      turn: 1
     });
   }
   });
