@@ -51,7 +51,6 @@ window.fbAsyncInit = function () {
   });
 
 };
-
 // Load the SDK asynchronously
 (function (d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -74,6 +73,8 @@ function testAPI() {
 };
 //Get profile pic
 var profilePic = "";
+var userId = "";
+var userName = "";
 function profileInfo() {
   console.log("incoming profile info");
   FB.api(
@@ -87,6 +88,7 @@ function profileInfo() {
       $("#profile-pic").html(`<img src=${response.picture.data.url} / >`);
       $("#profile-name").html(response.name);
       profilePic = response.picture.data.url;
+      userId = response.id;
 
 
 
@@ -234,11 +236,11 @@ var CheckWinners = {
   },
   //Winner Message Player 1
   updateWinner1: function () {
-    $("#like").html(`<img src=${response.picture.data.url} / >` + " likes you!!!");
+    $("#like").html(userName + `<img src=${response.picture.data.url} / >` + " likes you!!!");
   },
   //Winner Message Player 2
   updateWinner2: function () {
-    $("#like").html("It's not a match with ");
+    $("#like").html("It's not a match with " + userName);
   },
   userMatch: function () {
     // If Player 1 picks rock and Player 2 picks scissors then Player 1 wins.
@@ -277,7 +279,8 @@ $("#like-btn").on("click", function () {
     turns++;
     database.ref("players/1").update({
       choice: user_1_Choice,
-      pic: profilePic
+      pic: profilePic,
+      name: userName
     });
     database.ref().update({
       turn: turns
@@ -296,7 +299,8 @@ $("#like-btn").on("click", function () {
     turns++;
     database.ref("players/2").update({
       choice: user_2_Choice,
-      pic: profilePic
+      pic: profilePic,
+      name: userName
     });
     database.ref().update({
       turn: turns,
@@ -304,8 +308,12 @@ $("#like-btn").on("click", function () {
   });
 });
 //Photo Collage
+database.ref().once("/players").then(function(snapshot){
 $("#submit-user-password-btn").on("click", function () {
+
+  console.log(snapshot);
   for (var i = 0; i < response.length; i++) {
     $("#photos").html();
   }
-})
+});
+});
