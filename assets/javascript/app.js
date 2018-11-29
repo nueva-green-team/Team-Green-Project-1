@@ -69,7 +69,7 @@ function testAPI() {
     console.log(JSON.stringify(response));
     console.log('Successful login for: ' + response.name);
     document.getElementById('status').innerHTML =
-      'Thanks for logging in, ' + response.name + '!';
+      'Thanks for logging in, ' + response.name +  '!';
   });
 };
 //Get profile pic
@@ -116,15 +116,15 @@ var provider = new firebase.auth.FacebookAuthProvider();
 //   var errorMessage = error.message;
 //   // ...
 // });
-// firebase.auth().onAuthStateChanged(function (user) {
-//   if (user) {
-//     // User is signed in.
-//     // ...
-//   } else {
-//     // User is signed out.
-//     // ...
-//   }
-// });
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    // User is signed in.
+    // ...
+  } else {
+    // User is signed out.
+    // ...
+  }
+});
 firebase.auth().signInWithPopup(provider).then(function (result) {
   // This gives you a Facebook Access Token. You can use it to access the Facebook API.
   var token = result.credential.accessToken;
