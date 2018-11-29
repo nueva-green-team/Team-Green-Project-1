@@ -316,3 +316,52 @@ $("#btn").on("click", function () {
   }
 });
 });
+//Save location
+var geocoder;
+var pos;
+var mylocation = "";
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), { center: { lat: latVar, lng: lngVar }, zoom: 13 });
+  infoWindow = new google.maps.InfoWindow;
+  // Try HTML5 geoloc
+  if (navigator.geolocation) {
+    geocoder = new google.maps.Geocoder;
+
+    document.getElementById('submit').addEventListener('click', function() {
+        geocodeLatLng(geocoder, map, infowindow);
+      });
+      
+      navigator.geolocation.getCurrentPosition(function (position) {
+        pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+
+  });
+//geocoding
+function geocodeLatLng(geocoder, map) {
+    var input = document.getElementById('latlng').value;
+    var latlngStr = input.split(',', 2);
+    var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+    geocoder.geocode({'location': latlng}, function(results, status) {
+      if (status === 'OK') {
+        if (results[0]) {
+          map.setZoom(11);
+          var marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+          });
+          console.log(results[3].formatted_address);
+          console.log(results.address_components[0].long_name);
+          console.log(results.address_components[2].long_name);
+        } else {
+          console.log('No results found');
+        }
+      } else {
+        console.log('Geocoder failed due to: ' + status);
+      }
+    });
+  }
+}
+}
