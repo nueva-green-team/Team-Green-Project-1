@@ -275,7 +275,7 @@ $("#like-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_1_Choice = $(this).val();
+  user_1_Choice = $("#like-btn").val();
   console.log(user_1_Choice);
 
   database.ref().once('value').then(function (snapshot) {
