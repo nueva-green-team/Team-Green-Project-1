@@ -124,3 +124,9 @@ form {
    margin: 0;
    padding: 0;
  }
+ #map {
+  visibility: hidden;
+}
+#floating-panel {
+  visibility: hidden;
+}

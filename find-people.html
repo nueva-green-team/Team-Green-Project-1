@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Sedgwick+Ave" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/find-people.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/javascript" href="assets/javascript/app.js">
 </head>
 <div class="icon-bar">
     <a href="places.html"><i class="fa fa-map"></i></a>
@@ -32,8 +31,15 @@
     <div id="photos"></div>
 
     <div id="like"></div>
+    <div id="floating-panel">
+            <input id="latlng" type="text" value="40.714224,-73.961452">
+            <input id="submit" type="button" value="Reverse Geocode">
+        </div>
+        <div id="map"></div>
 
 </body>
 <script src="assets/javascript/app.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjpl5Ka-oPf0xWLsN1kXq8qJjOUnET4nk&libraries=geometry,places,visualization&callback=initMap"
+async defer></script>
 
 </html>

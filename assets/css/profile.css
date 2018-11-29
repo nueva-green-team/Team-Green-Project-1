@@ -44,9 +44,3 @@ body {
         margin-right: -790px;
         margin-top: 100px;
     }
-#map {
-    visibility: hidden;
-}
-#floating-panel {
-    visibility: hidden;
-}
