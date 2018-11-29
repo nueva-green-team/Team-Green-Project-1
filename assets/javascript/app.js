@@ -234,11 +234,11 @@ var CheckWinners = {
   },
   //Winner Message Player 1
   updateWinner1: function () {
-    $("#like").html(userName + " likes you!!!");
+    $("#like").html(`<img src=${response.picture.data.url} / >` + " likes you!!!");
   },
   //Winner Message Player 2
   updateWinner2: function () {
-    $("#like").html("It's not a match with " + userName);
+    $("#like").html("It's not a match with ");
   },
   userMatch: function () {
     // If Player 1 picks rock and Player 2 picks scissors then Player 1 wins.
