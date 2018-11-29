@@ -362,6 +362,3 @@ function geocodeLatLng(geocoder) {
   }
 }
 }
-$(document).ready(function() {
-  initMap();
-})
