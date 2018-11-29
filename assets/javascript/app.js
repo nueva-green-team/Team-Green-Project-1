@@ -65,12 +65,12 @@ window.fbAsyncInit = function () {
 // successful.  See statusChangeCallback() for when this call is made.
 function testAPI() {
   console.log('Welcome!  Fetching your information.... ');
-  FB.api('/me',function (response) {
-      console.log(JSON.stringify(response));
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
+  FB.api('/me', function (response) {
+    console.log(JSON.stringify(response));
+    console.log('Successful login for: ' + response.name);
+    document.getElementById('status').innerHTML =
+      'Thanks for logging in, ' + response.name + '!';
+  });
 };
 //Get profile pic
 function profileInfo() {
@@ -82,6 +82,7 @@ function profileInfo() {
     function (response) {
       console.log(JSON.stringify(response));
       console.log(response.picture.data.url);
+      userName = response.name;
       $("#profile-pic").html(response.picture.data.url);
       $("#profile-name").html(response.name);
 
@@ -103,27 +104,27 @@ var database = firebase.database();
 var provider = new firebase.auth.FacebookAuthProvider();
 // $("#profile-pic").html()
 // $('#photos').append(allImages);
-firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
-firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-    // User is signed in.
-    // ...
-  } else {
-    // User is signed out.
-    // ...
-  }
-});
+// firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+//   // Handle Errors here.
+//   var errorCode = error.code;
+//   var errorMessage = error.message;
+//   // ...
+// });
+// firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+//   // Handle Errors here.
+//   var errorCode = error.code;
+//   var errorMessage = error.message;
+//   // ...
+// });
+// firebase.auth().onAuthStateChanged(function (user) {
+//   if (user) {
+//     // User is signed in.
+//     // ...
+//   } else {
+//     // User is signed out.
+//     // ...
+//   }
+// });
 firebase.auth().signInWithPopup(provider).then(function (result) {
   // This gives you a Facebook Access Token. You can use it to access the Facebook API.
   var token = result.credential.accessToken;
@@ -201,4 +202,98 @@ firebase.auth().signOut().then(function () {
 }).catch(function (error) {
   // An error happened.
 });
-//USER INFO
+//LIKE OR NOT?
+var PlayerName = '';
+var userName = "";
+var user_1_Choice = "";
+var user_2_Choice = "";
+var newMessage = "";
+var turns = 1;
+var delayTimer;
+var delayTimer2;
+var IsGameResetting = false;
+//Score Check
+var CheckWinners = {
+  //Restart Game
+  resetGame: function () {
+    IsGameResetting = false;
+    turns = 1;
+    //update the turn in the firebase to 1
+    database.ref().update({
+      turn: turns
+    });
+  },
+  //Clear TO and Reset
+  clearDelay: function () {
+    clearTimeout(delayTimer);
+    CheckWinners.resetGame();
+  },
+  //Winner Message Player 1
+  updateWinner1: function () {
+    $("#like").html(userName + " likes you!!!");
+  },
+  //Winner Message Player 2
+  updateWinner2: function () {
+    $("#like").html("It's not a match with " + userName);
+  },
+  userMatch: function () {
+    // If Player 1 picks rock and Player 2 picks scissors then Player 1 wins.
+    if (user_1_Choice == "yes" && user_2_Choice == "yes") {
+      CheckWinners.updateWinner1();
+      window.location.href = "https://nueva-green-team.github.io/Team-Green-Project-1/places.html";
+
+    }
+    else {
+      CheckWinners.updateWinner2();
+    }
+  }
+};
+database.ref().on("value", function (snapshot) {
+  var databaseTurn = snapshot.child("turn").val();
+  if (databaseTurn == 3 && IsGameResetting == false) {
+    IsGameResetting = true;
+    //Restating variables to match the database
+    user_1_Choice = snapshot.child("players").child(1).val().choice;
+    user_2_Choice = snapshot.child("players").child(2).val().choice;
+    //Check for winner
+    CheckWinners.userMatch();
+    // Display this page for 5 seconds and call clearDelay function to reset the game
+    delayTimer = setTimeout(CheckWinners.clearDelay, 5 * 1000);
+  }
+});
+//if Player 1 makes a choice 
+$("#like-btn").on("click", function () {
+  //Grabs player choice
+  user_1_Choice = $(this).val();
+  console.log(user_1_Choice);
+
+  database.ref().once('value').then(function (snapshot) {
+    //Turn Switch	
+    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
+    turns++;
+    database.ref("players/1").update({
+      choice: user_1_Choice,
+    });
+    database.ref().update({
+      turn: turns
+    });
+  });
+});
+//if Player 2 makes a choice 
+$("#like-btn").on("click", function () {
+  //Grabs player choice
+  user_2_Choice = $(this).val();
+  console.log(user_2_Choice);
+
+  database.ref().once('value').then(function (snapshot) {
+    //Turn Switch		
+    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
+    turns++;
+    database.ref("players/2").update({
+      choice: user_2_Choice,
+    });
+    database.ref().update({
+      turn: turns,
+    });
+  });
+});
