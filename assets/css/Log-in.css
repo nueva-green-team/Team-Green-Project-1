@@ -1,26 +1,55 @@
 body {
-    background-image: url("https://i.pinimg.com/originals/96/a5/26/96a526d2dfa752b5b6c4e40cf5985d8f.jpg");
-    background-repeat: no-repeat;
+    background: #f7ff00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #db36a4, #f7ff00);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #db36a4, #f7ff00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-position: center;
     background-size: cover;
     height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    
 }
-
-h1 {
-    text-align: center;
+.btn , .btn-primary {
+    background: #A770EF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-family: 'Amatic SC';
+    border-width: 5px;
+    border-color: #000000;
+    color: #000000;
+    font: bold;
+    padding: 15px 40px;
+    font-size: 40px;
+    display: inline-block;
+    /* margin-left: 800px; */
     text-align: center;
+    display: block;
+}
+   h1 {
+    font-family: 'Amatic SC';
+    /* float: center; */
     font-size: 50px;
     color: #000000; 
 }
 
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .jumbotron {
-    background-color: #5AC4D9;
-    border-style: solid;
+    background: #00c3ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffff1c, #00c3ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffff1c, #00c3ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: solid;
+    border-width: 10px;
     border-width: 30px;
-    margin-top: 250px;
+    margin-top: 100px;
     margin-right: 350px;
     margin-left: 350px;
+
 }
 .icon-bar {
     width: 100%; /* Full-width */
