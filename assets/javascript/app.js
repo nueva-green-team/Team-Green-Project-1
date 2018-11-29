@@ -82,7 +82,7 @@ function profileInfo() {
     { "fields": "id,name,picture" },
     function (response) {
       console.log(JSON.stringify(response));
-      console.log(response.profile_pic);
+      console.log(response.picture.data.url);
     }
   );
 };
