@@ -3,6 +3,7 @@ var newMessage = "";
 var map, infoWindow;
 var latVar = 41.85;
 var lngVar = -87.64;
+var geocoder;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), { center: { lat: latVar, lng: lngVar }, zoom: 13 });
@@ -28,6 +29,11 @@ function initMap() {
                 originInput, { placeIdOnly: true });
             var destinationAutocomplete = new google.maps.places.Autocomplete(
                 destinationInput, { placeIdOnly: true });
+            geocoder = new google.maps.Geocoder;
+
+            document.getElementById('submit').addEventListener('click', function() {
+                geocodeLatLng(geocoder, map, infowindow);
+              });
 
             this.sayHello('Mark')
 
@@ -142,7 +148,7 @@ function initMap() {
             infoWindow.open(map);
             map.setCenter(pos);
             console.log(pos);
-            
+
             //Click to search restaurants nearby
             var restaurantButton = document.getElementById('find-food');
             restaurantButton.onclick = function () {
@@ -251,3 +257,30 @@ function initMap() {
         $("#chat-window").append("</br>" + snapshot.val().message + "</br>");
     });
 };
+//geocoding
+var mylocation = "";
+function geocodeLatLng(geocoder, map, infowindow) {
+    var input = document.getElementById('latlng').value;
+    var latlngStr = input.split(',', 2);
+    var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+    geocoder.geocode({'location': latlng}, function(results, status) {
+      if (status === 'OK') {
+        if (results[0]) {
+          map.setZoom(11);
+          var marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+          });
+          infowindow.setContent(results[0].formatted_address);
+          console.log(results[3].formatted_address);
+          console.log(results.address_components[0].long_name);
+          console.log(results.address_components[2].long_name);
+          infowindow.open(map, marker);
+        } else {
+          window.alert('No results found');
+        }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
+    });
+  }
