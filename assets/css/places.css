@@ -35,7 +35,7 @@ body {
   margin-top: 100px;
   margin-left: 30px;
   height: 400px;
-  width: 800px;
+  width: 950px;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
@@ -47,6 +47,7 @@ html, body {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
+  border: 10px solid black;
 }
 
 #right-panel select, #right-panel input {
@@ -70,7 +71,7 @@ html, body {
   width: 400px;
   padding: 5px;
   z-index: 5;
-  border: 1px solid #999;
+  border: 9px solid black;
   background: #fff;
 }
 h2 {
