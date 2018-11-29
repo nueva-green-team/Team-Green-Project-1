@@ -78,7 +78,7 @@ function profileInfo() {
   FB.api(
     '/me',
     'GET',
-    { "fields": "id,name,picture" },
+    { "fields": "id,name,picture,email" },
     function (response) {
       console.log(JSON.stringify(response));
       console.log(response.picture.data.url);
