@@ -255,23 +255,78 @@ var CheckWinners = {
 
     }
     else {
-      CheckWinners.updateWinner2();
+      $("#like").html("Not a match :(");
     }
   }
 };
 database.ref().on("value", function (snapshot) {
-  var databaseTurn = snapshot.child("turn").val();
-  if (databaseTurn == 3 && IsGameResetting == false) {
-    IsGameResetting = true;
-    //Restating variables to match the database
-    user_1_Choice = snapshot.child("players").child(1).val().choice;
-    user_2_Choice = snapshot.child("players").child(2).val().choice;
-    userName = snapshot.child("players").child(1).val().name;
-    userName = snapshot.child("players").child(2).val().name;
-    //Check for winner
-    CheckWinners.userMatch();
-    // Display this page for 5 seconds and call clearDelay function to reset the game
-    delayTimer = setTimeout(CheckWinners.clearDelay, 5 * 1000);
+  //disconnect
+  function playerDisconnect() {
+    if (PlayerName != "") {
+      //if this is Player 1's browser
+      if ((snapshot.child("players").child(1).exists()) && (PlayerName == snapshot.child("players").child(1).val().name)) {
+        //delete the player 1 database
+        database.ref("players/1").onDisconnect().remove();
+        //if this is Player 2's browser
+      } else if ((snapshot.child("players").child(2).exists()) && (PlayerName == snapshot.child("players").child(2).val().name)) {
+        //delete the player 1 database
+        database.ref("players/2").onDisconnect().remove();
+        //delete the turn database				
+        database.ref("turn").onDisconnect().remove();
+      }
+    }
+  };
+  //Clearing Data
+  //If Player 2 exists but not 1, show Player 2 name
+  if ((snapshot.child("players").child(2).exists()) && ((snapshot.child("players").child(1).exists()) === false)) {
+    //when any player disconnect from the game
+    playerDisconnect();
+  };
+  //If Player 1 exists but not 2, show Player 1 name
+  if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()) === false)) {
+    //when any player disconnect from the game
+    playerDisconnect();
+    if (PlayerName == snapshot.child("players").child(1).val().name) {
+
+    }
+    //If both players exists, then game is ready.
+  } else if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()))) {
+    //Keeping track of turn for the database
+    var databaseTurn = snapshot.child("turn").val();
+    user_1_Name = snapshot.child("players").child(1).val().name;
+    user_2_Name = snapshot.child("players").child(2).val().name;
+    //Both browers will show...
+    //when any player disconnect from the game
+    playerDisconnect();
+    //Player 1's browser at their turn
+    if ((PlayerName == snapshot.child("players").child(1).val().name) && (databaseTurn == 1)) {
+
+    }
+    //Player 1's browser at Player 2's turn
+    if ((PlayerName == snapshot.child("players").child(1).val().name) && (databaseTurn == 2)) {
+
+    }
+
+    //Player 2's browser at Player 1's turn
+    if ((PlayerName == snapshot.child("players").child(2).val().name) && (databaseTurn == 1)) {
+
+    }
+    //Player 2's browser at their turn
+    if ((PlayerName == snapshot.child("players").child(2).val().name) && (databaseTurn == 2)) {
+
+    }
+    //Both player's browser at turn 3
+    var databaseTurn = snapshot.child("turn").val();
+    if (databaseTurn == 3 && IsGameResetting == false) {
+      IsGameResetting = true;
+      //Restating variables to match the database
+      user_1_Choice = snapshot.child("players").child(1).val().choice;
+      user_2_Choice = snapshot.child("players").child(2).val().choice;
+      //Check for winner
+      CheckWinners.userMatch();
+      // Display this page for 5 seconds and call clearDelay function to reset the game
+      delayTimer = setTimeout(CheckWinners.clearDelay, 5 * 1000);
+    }
   }
 });
 //Players entering the game
@@ -315,7 +370,47 @@ $("#like-btn").on("click", function () {
       console.log("Is it A MATCH?!?!");
     }
   });
-})
+});
+$("#dislike-btn").on("click", function () {
+  //Grab Player name input 
+  //Change html to Player name
+  PlayerName = userName;
+  console.log(userName);
+
+  // Read snapshot when Player adds name
+  database.ref().once('value').then(function (snapshot) {
+    //if Player 1 doesn't exist
+    if ((snapshot.child("players").child(1).exists()) === false) {
+      database.ref("players/1").set({
+        name: "userName",
+        pic: "profilePic"
+      });
+      database.ref("players/1").update({
+        choice: "user_1_Choice",
+        city: "myLocation"
+      });
+      database.ref().update({
+        turn: 1
+      });
+      //if Player 2 doesn't exist
+    } else if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()) === false)) {
+      database.ref("players/2").set({
+        name: "userName",
+        pic: "profilePic"
+      });
+      database.ref("players/2").update({
+        choice: "user_2_Choice",
+        city: "myLocation"
+      });
+      database.ref().update({
+        turn: 1
+      });
+      //If both players exist
+    } else if ((snapshot.child("players").child(1).exists()) && (snapshot.child("players").child(2).exists())) {
+      console.log("Is it A MATCH?!?!");
+    }
+  });
+});
 //if Player 1 makes a choice 
 $("#like-btn").on("click", function (event) {
   //prevent refresh
@@ -330,19 +425,19 @@ $("#like-btn").on("click", function (event) {
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
     if ((PlayerName == snapshot.child("players").child(1).val().name)) {
-    user_1_Choice = (snapshot.child("choice").exists() ? snapshot.child("choice").val() : user_1_Choice);
-    database.ref("players/1").update({
-      name: userName,
-      pic: profilePic
-    });
-    database.ref("players/1").update({
-      choice: user_1_Choice,
-      city: myLocation,
-    });
-    database.ref().update({
-      turn: turns
-    });
-  }
+      user_1_Choice = (snapshot.child("choice").exists() ? snapshot.child("choice").val() : user_1_Choice);
+      database.ref("players/1").update({
+        name: userName,
+        pic: profilePic
+      });
+      database.ref("players/1").update({
+        choice: user_1_Choice,
+        city: myLocation,
+      });
+      database.ref().update({
+        turn: turns
+      });
+    }
   });
 });
 $("#dislike-btn").on("click", function (event) {
@@ -357,18 +452,18 @@ $("#dislike-btn").on("click", function (event) {
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
     if ((PlayerName == snapshot.child("players").child(1).val().name)) {
-    database.ref("players/1").update({
-      name: userName,
-      pic: profilePic
-    });
-    database.ref("players/1").update({
-      choice: user_1_Choice,
-      city: myLocation,
-    });
-    database.ref().update({
-      turn: turns
-    });
-  }
+      database.ref("players/1").update({
+        name: userName,
+        pic: profilePic
+      });
+      database.ref("players/1").update({
+        choice: user_1_Choice,
+        city: myLocation,
+      });
+      database.ref().update({
+        turn: turns
+      });
+    }
   });
 });
 //if Player 2 makes a choice 
@@ -384,18 +479,18 @@ $("#like-btn").on("click", function (event) {
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
     if ((PlayerName == snapshot.child("players").child(1).val().name)) {
-    database.ref("players/2").update({
-      name: userName,
-      city: myLocation
-    });
-    database.ref("players/2").update({
-      choice: user_2_Choice,
-      pic: profilePic
-    });
-    database.ref().update({
-      turn: turns,
-    });
-  }
+      database.ref("players/2").update({
+        name: userName,
+        city: myLocation
+      });
+      database.ref("players/2").update({
+        choice: user_2_Choice,
+        pic: profilePic
+      });
+      database.ref().update({
+        turn: turns,
+      });
+    }
   });
 });
 $("#dislike-btn").on("click", function (event) {
@@ -410,18 +505,18 @@ $("#dislike-btn").on("click", function (event) {
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
     if ((PlayerName == snapshot.child("players").child(1).val().name)) {
-    database.ref("players/2").update({
-      name: userName,
-      city: myLocation
-    });
-    database.ref("players/2").update({
-      choice: user_2_Choice,
-      pic: profilePic
-    });
-    database.ref().update({
-      turn: turns,
-    });
-  }
+      database.ref("players/2").update({
+        name: userName,
+        city: myLocation
+      });
+      database.ref("players/2").update({
+        choice: user_2_Choice,
+        pic: profilePic
+      });
+      database.ref().update({
+        turn: turns,
+      });
+    }
   });
 });
 // //Photo Collage
