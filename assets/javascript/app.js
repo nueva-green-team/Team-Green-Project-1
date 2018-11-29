@@ -1,4 +1,4 @@
-//Facebook
+var profilePic;
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
   console.log('statusChangeCallback');
@@ -83,6 +83,9 @@ function profileInfo() {
     function (response) {
       console.log(JSON.stringify(response));
       console.log(response.picture.data.url);
+      profilePic = response.picture.data.url;
+      $("#profile-pic").html(profilePic);
+
     }
   );
 };
@@ -116,13 +119,6 @@ firebase.auth().signInWithEmailAndPassword(email, password).catch(function (erro
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // User is signed in.
-    var displayName = user.displayName;
-    var email = user.email;
-    var emailVerified = user.emailVerified;
-    var photoURL = user.photoURL;
-    var isAnonymous = user.isAnonymous;
-    var uid = user.uid;
-    var providerData = user.providerData;
     // ...
   } else {
     // User is signed out.
