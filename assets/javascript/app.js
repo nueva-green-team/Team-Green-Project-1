@@ -519,15 +519,17 @@ $("#dislike-btn").on("click", function (event) {
     }
   });
 });
-// //Photo Collage
-// $("#btn").on("click", function () {
-//   database.ref("/players").on("value", function (snapshot) {
-//     console.log(snapshot);
-//     for (var i = 0; i < response.length; i++) {
-//       $("#photos").html();
-//     }
-//   });
-// });
+//Photo Collage
+$("#btn").on("click", function () {
+  database.ref("players").on("value", function (snapshot) {
+    console.log(snapshot);
+    
+    for (var i = 0; i < snapshot.length; i++) {
+      if (myLocation = snapshot.child("players").child(i).val().city)
+      $("#photos").html();
+    }
+  });
+});
 // //Save location
 var geocoder;
 
