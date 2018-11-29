@@ -333,7 +333,7 @@ $("#like-btn").on("click", function (event) {
       choice: user_1_Choice,
       city: myLocation,
     });
-    database.ref("turn").update({
+    database.ref().update({
       turn: turns
     });
   }
@@ -359,7 +359,7 @@ $("#dislike-btn").on("click", function (event) {
       choice: user_1_Choice,
       city: myLocation,
     });
-    database.ref("turn").update({
+    database.ref().update({
       turn: turns
     });
   }
@@ -386,7 +386,7 @@ $("#like-btn").on("click", function (event) {
       choice: user_2_Choice,
       pic: profilePic
     });
-    database.ref("turn").update({
+    database.ref().update({
       turn: turns,
     });
   }
@@ -412,7 +412,7 @@ $("#dislike-btn").on("click", function (event) {
       choice: user_2_Choice,
       pic: profilePic
     });
-    database.ref("turn").update({
+    database.ref().update({
       turn: turns,
     });
   }
