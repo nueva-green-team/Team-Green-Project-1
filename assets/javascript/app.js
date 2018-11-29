@@ -299,19 +299,18 @@ var CheckWinners = {
 //   }
 // });
 //Players entering the game
-var PlayerName = "";
-$("#like-btn").on("click", function () {
-  //Grab Player name input 
-  //Change html to Player name
-  PlayerName = userName;
-  console.log(userName);
-});
-$("#dislike-btn").on("click", function () {
-  //Grab Player name input 
-  //Change html to Player name
-  PlayerName = userName;
-  console.log(userName);
-});
+// $("#like-btn").on("click", function () {
+//   //Grab Player name input 
+//   //Change html to Player name
+//   PlayerName = userName;
+//   console.log(userName);
+// });
+// $("#dislike-btn").on("click", function () {
+//   //Grab Player name input 
+//   //Change html to Player name
+//   PlayerName = userName;
+//   console.log(userName);
+// });
 //if Player 1 makes a choice 
 $("#like-btn").on("click", function (event) {
   //prevent refresh
