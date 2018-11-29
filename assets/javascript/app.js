@@ -276,21 +276,7 @@ database.ref().on("value", function (snapshot) {
       }
     }
   };
-  //Clearing Data
-  //If Player 2 exists but not 1, show Player 2 name
-  if ((snapshot.child("players").child(2).exists()) && ((snapshot.child("players").child(1).exists()) === false)) {
-    //when any player disconnect from the game
-    playerDisconnect();
-  };
-  //If Player 1 exists but not 2, show Player 1 name
-  if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()) === false)) {
-    //when any player disconnect from the game
-    playerDisconnect();
-    if (PlayerName == snapshot.child("players").child(1).val().name) {
-
-    }
-    //If both players exists, then game is ready.
-  } else if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()))) {
+  if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()))) {
     //Keeping track of turn for the database
     var databaseTurn = snapshot.child("turn").val();
     user_1_Name = snapshot.child("players").child(1).val().name;
@@ -339,34 +325,7 @@ $("#like-btn").on("click", function () {
 
   // Read snapshot when Player adds name
   database.ref().once('value').then(function (snapshot) {
-    //if Player 1 doesn't exist
-    if ((snapshot.child("players").child(1).exists()) === false) {
-      database.ref("players/1").set({
-        name: "userName",
-        pic: "profilePic"
-      });
-      database.ref("players/1").update({
-        choice: "user_1_Choice",
-        city: "myLocation"
-      });
-      database.ref().update({
-        turn: 1
-      });
-      //if Player 2 doesn't exist
-    } else if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()) === false)) {
-      database.ref("players/2").set({
-        name: "userName",
-        pic: "profilePic"
-      });
-      database.ref("players/2").update({
-        choice: "user_2_Choice",
-        city: "myLocation"
-      });
-      database.ref().update({
-        turn: 1
-      });
-      //If both players exist
-    } else if ((snapshot.child("players").child(1).exists()) && (snapshot.child("players").child(2).exists())) {
+    if ((snapshot.child("players").child(1).exists()) && (snapshot.child("players").child(2).exists())) {
       console.log("Is it A MATCH?!?!");
     }
   });
@@ -523,10 +482,10 @@ $("#dislike-btn").on("click", function (event) {
 $("#btn").on("click", function () {
   database.ref("players").on("value", function (snapshot) {
     console.log(snapshot);
-    
+
     for (var i = 0; i < snapshot.length; i++) {
       if (myLocation = snapshot.child("players").child(i).val().city)
-      $("#photos").html();
+        $("#photos").html();
     }
   });
 });
