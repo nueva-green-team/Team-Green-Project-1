@@ -321,6 +321,8 @@ var geocoder;
 var pos;
 var mylocation = "";
 var map;
+var latVar = 41.85;
+var lngVar = -87.64;
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), { center: { lat: latVar, lng: lngVar }, zoom: 13 });
   infoWindow = new google.maps.InfoWindow;
@@ -329,7 +331,7 @@ function initMap() {
     geocoder = new google.maps.Geocoder;
 
     document.getElementById('submit').addEventListener('click', function() {
-        geocodeLatLng(geocoder, map, infowindow);
+        geocodeLatLng(geocoder, map);
       });
       
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -347,11 +349,6 @@ function geocodeLatLng(geocoder, map) {
     geocoder.geocode({'location': latlng}, function(results, status) {
       if (status === 'OK') {
         if (results[0]) {
-          map.setZoom(11);
-          var marker = new google.maps.Marker({
-            position: latlng,
-            map: map
-          });
           console.log(results[3].formatted_address);
           console.log(results.address_components[0].long_name);
           console.log(results.address_components[2].long_name);
@@ -365,3 +362,6 @@ function geocodeLatLng(geocoder, map) {
   }
 }
 }
+$(document).ready(function() {
+  initMap();
+})
