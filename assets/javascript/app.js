@@ -308,9 +308,8 @@ $("#like-btn").on("click", function () {
   });
 });
 //Photo Collage
-database.ref("/players").once("value").then(function(snapshot){
 $("#btn").on("click", function () {
-
+  database.ref("/players").once("value").then(function(snapshot){
   console.log(snapshot);
   for (var i = 0; i < response.length; i++) {
     $("#photos").html();
