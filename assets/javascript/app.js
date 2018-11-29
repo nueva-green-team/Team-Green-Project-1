@@ -275,42 +275,44 @@ $("#like-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_1_Choice = $("#like-btn").val();
+  user_1_Choice = $(this).val();
   console.log(user_1_Choice);
 
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch	
-    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
+    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : );
     turns++;
+    user_1_Choice= (snapshot.child("choice").exists() ? snapshot.child("choice").val() : user_1_Choice);
     database.ref("players/1").update({
       choice: user_1_Choice,
-      get choice() {
-        return this.choice;
-      },
-      set choice(value) {
-        this.choice = value;
-      },
       city: myLocation,
-      get city() {
-        return this.city;
-      },
-      set city(value) {
-        this.city = value;
-      },
       name: userName,
-      get name() {
-        return this.name;
-      },
-      set name(value) {
-        this.name = value;
-      },
-      pic: profilePic,
-      get pic() {
-        return this.pic;
-      },
-      set pic(value) {
-        this.pic = value;
-      },
+      pic: profilePic
+      
+      
+    });
+    database.ref().update({
+      turn: turns
+    });
+  });
+});
+$("#dislike-btn").on("click", function (event) {
+  //prevent refresh
+  event.preventDefault();
+  //Grabs player choice
+  user_1_Choice = $(this).val();
+  console.log(user_1_Choice);
+
+  database.ref().once('value').then(function (snapshot) {
+    //Turn Switch	
+    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : );
+    turns++;
+    user_1_Choice= (snapshot.child("choice").exists() ? snapshot.child("choice").val() : user_1_Choice);
+    database.ref("players/1").update({
+      choice: user_1_Choice,
+      city: myLocation,
+      name: userName,
+      pic: profilePic
       
       
     });
@@ -333,34 +335,9 @@ $("#like-btn").on("click", function (event) {
     turns++;
     database.ref("players/2").update({
       choice: user_2_Choice,
-      get choice() {
-        return this.choice;
-      },
-      set choice(value) {
-        this.choice = value;
-      },
-      city: myLocation,
-      get city() {
-        return this.city;
-      },
-      set city(value) {
-        this.city = value;
-      },
-      name: userName,
-      get name() {
-        return this.name;
-      },
-      set name(value) {
-        this.name = value;
-      },
       pic: profilePic,
-      get pic() {
-        return this.pic;
-      },
-      set pic(value) {
-        this.pic = value;
-      },
-      
+      name: userName,
+      city: myLocation
     });
     database.ref().update({
       turn: turns,
