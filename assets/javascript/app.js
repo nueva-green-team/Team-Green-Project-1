@@ -308,7 +308,7 @@ $("#like-btn").on("click", function () {
   });
 });
 //Photo Collage
-database.ref().once("/players").then(function(snapshot){
+database.ref("/players").once("value").then(function(snapshot){
 $("#submit-user-password-btn").on("click", function () {
 
   console.log(snapshot);
