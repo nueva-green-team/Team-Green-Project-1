@@ -1,7 +1,7 @@
 body {
-  
-  background: -webkit-linear-gradient(53deg, rgb(250, 6, 0), rgb(219, 35, 187));
-  background: linear-gradient(53deg, rgb(250, 6, 0), rgb(219, 35, 187));
+  background: #f7ff00;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #db36a4, #f7ff00);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #db36a4, #f7ff00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-position: center;
   background-size: cover;
   height: 100%;
@@ -143,20 +143,24 @@ button {
   font-weight: 300;
 }
 #chat-window{
-	border: 5px solid white;
+	border: 15px solid black;
 	height: 450px;
 	overflow: scroll;
 	scroll-behavior: auto;
 	text-align: left;
 	padding-left: 20px;
 	background-color: white;
-	color: white;
-	font-size: 15px;
+	color: black;
+  font-size: 15px;
+  margin-top: -30px;
 	
 }
 #chat-input{
-	width: 100%;
-	color: #363234;
+  width: 800px;
+  height: 90px;
+  color: #363234;
+  border: 15px solid black;
+  
 }
 
 #submit-chat{
