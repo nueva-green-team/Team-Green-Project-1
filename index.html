@@ -16,13 +16,10 @@
 </head>
 
 <div class="icon-bar">
-    <button id="logout-btn" onclick=“javascript:logout();“><a href="#">Logout</a></button>
+    <button id="logout-btn" onclick="javascript:logout();"><a href="#">Logout</a></button>
     <button id="search-btn"><a href="find-people.html">Search</a></button>
     <button id="profile-btn"><a href="profile.html">Profile</a></button>
     <button id="home-btn"><a href="index.html">Home</a></button>
-    
-       
-    
 </div>
 
 <body>
@@ -31,18 +28,22 @@
             <h2 class="display-4">Meet Me Halfway</h2>
             <p class="lead">Making dating... convenient.</p>
         </div>
-      </div>
-      <div>
-<div class="buttons">
-    <a href="Log-in.html"  class="btn btn-primary btn-lg" role="button">Join now, or sign in!</a>
-    
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjpl5Ka-oPf0xWLsN1kXq8qJjOUnET4nk&libraries=geometry,places,visualization&callback=initMap"
-        async defer></script>
+    <div>
+        <div class="buttons">
+            <a href="Log-in.html" class="btn btn-primary btn-lg" role="button">Join now, or sign in!</a>
+            <button onclick="javascript:logout();">Logout from Facebook</button>
+        </div>
 
-<div class="footer">
-     <p> © Meet Me Halfway 2018</p>
-</div>
+        <div id="like"></div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjpl5Ka-oPf0xWLsN1kXq8qJjOUnET4nk&libraries=geometry,places,visualization&callback=initMap"
+            async defer></script>
+
+        <div class="footer">
+            <p> © Meet Me Halfway 2018</p>
+        </div>
 </body>
 <script src="assets/javascript/app.js"></script>
+
 </html>
