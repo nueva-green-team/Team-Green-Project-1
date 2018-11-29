@@ -10,7 +10,7 @@ function statusChangeCallback(response) {
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
     testAPI();
-    profilePic();
+    profileInfo();
   } else {
     // The person is not logged into your app or we are unable to tell.
     document.getElementById('status').innerHTML = 'Please log ' +
@@ -75,24 +75,18 @@ function testAPI() {
   });
 };
 //Get profile pic
-function profilePic() {
-  FB.api('/me/albums', function (response) {
-    for (album in response.data) {
-
-      // Find the Profile Picture album
-      if (response.data[album].name == "Profile Pictures") {
-
-        // Get a list of all photos in that album.
-        FB.api(response.data[album].id + "/photos", function (response) {
-
-          //The image link
-          image = response.data[0].images[0].source;
-          console.log(JSON.stringify(response.data[0].images[0].source));
-        });
-      }
+function profileInfo() {
+  FB.api(
+    '/me',
+    'GET',
+    {"fields":"id,name,age_range,gender,profile_pic,location"},
+    function(response) {
+        console.log(response.profile_pic);
+        console.log(response);
     }
-  });
+  );
 };
+profileInfo();
 
 // Firebase for Profile Data
 // Initialize Firebase
