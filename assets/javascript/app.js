@@ -71,10 +71,11 @@ function testAPI() {
       'Thanks for logging in, ' + response.name + '!';
   });
 };
-//Get profile pic
+//Get profile info
 var profilePic = "";
-var userId = "";
 var userName = "";
+var myLocation = "";
+
 function profileInfo() {
   console.log("incoming profile info");
   FB.api(
@@ -262,6 +263,7 @@ database.ref().on("value", function (snapshot) {
     //Restating variables to match the database
     user_1_Choice = snapshot.child("players").child(1).val().choice;
     user_2_Choice = snapshot.child("players").child(2).val().choice;
+    userName = snapshot.child("players").child().val().name;
     //Check for winner
     CheckWinners.userMatch();
     // Display this page for 5 seconds and call clearDelay function to reset the game
@@ -320,7 +322,6 @@ $("#btn").on("click", function () {
   });
 });
 // //Save location
-var myLocation;
 var geocoder;
 
 if (navigator.geolocation) {
