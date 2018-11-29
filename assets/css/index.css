@@ -209,7 +209,10 @@ body {
     overflow: auto; /* Overflow due to float */
 }
 
-.icon-bar a {
+#home-btn,
+#profile-btn,
+#search-btn,
+#logout-btn {
     float: right; /* Float links side by side */
     text-align: center; /* Center-align text */
     width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
