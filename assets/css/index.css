@@ -279,6 +279,11 @@ body {
     color: white;
     text-align: center;
 }
-
+#map {
+  visibility: hidden;
+}
+#floating-panel {
+  visibility: hidden;
+}
 
 
