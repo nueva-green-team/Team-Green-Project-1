@@ -284,9 +284,35 @@ $("#like-btn").on("click", function (event) {
     turns++;
     database.ref("players/1").update({
       choice: user_1_Choice,
-      pic: profilePic,
-      name: userName,
+      get choice() {
+        return this._choice;
+      },
+      set choice(value) {
+        this._choice = value;
+      },
       city: myLocation,
+      get city() {
+        return this._city;
+      },
+      set city(value) {
+        this._city = value;
+      },
+      name: userName,
+      get name() {
+        return this._name;
+      },
+      set name(value) {
+        this._name = value;
+      },
+      pic: profilePic,
+      get pic() {
+        return this._pic;
+      },
+      set pic(value) {
+        this._pic = value;
+      },
+      
+      
     });
     database.ref().update({
       turn: turns
@@ -307,9 +333,34 @@ $("#like-btn").on("click", function (event) {
     turns++;
     database.ref("players/2").update({
       choice: user_2_Choice,
-      pic: profilePic,
+      get choice() {
+        return this._choice;
+      },
+      set choice(value) {
+        this._choice = value;
+      },
+      city: myLocation,
+      get city() {
+        return this._city;
+      },
+      set city(value) {
+        this._city = value;
+      },
       name: userName,
-      city: myLocation
+      get name() {
+        return this._name;
+      },
+      set name(value) {
+        this._name = value;
+      },
+      pic: profilePic,
+      get pic() {
+        return this._pic;
+      },
+      set pic(value) {
+        this._pic = value;
+      },
+      
     });
     database.ref().update({
       turn: turns,
