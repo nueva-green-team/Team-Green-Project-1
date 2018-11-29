@@ -288,7 +288,7 @@ $("#like-btn").on("click", function () {
       });
       database.ref("players/1").update({
         choice: "user_1_Choice",
-        city: "myLocation",
+        city: "myLocation"
       });
       //if Player 2 doesn't exist
     } else if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()) === false)) {
@@ -298,10 +298,10 @@ $("#like-btn").on("click", function () {
       });
       database.ref("players/2").update({
         choice: "user_2_Choice",
-        city: "myLocation",
+        city: "myLocation"
       });
       database.ref().update({
-        turn: turns,
+        turn: turns
       });
       //If both players exist
     } else if ((snapshot.child("players").child(1).exists()) && (snapshot.child("players").child(2).exists())) {
@@ -322,6 +322,7 @@ $("#like-btn").on("click", function (event) {
     //Turn Switch	
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
+    if ((PlayerName == snapshot.child("players").child(1).val().name)) {
     user_1_Choice = (snapshot.child("choice").exists() ? snapshot.child("choice").val() : user_1_Choice);
     database.ref("players/1").update({
       name: userName,
@@ -334,6 +335,7 @@ $("#like-btn").on("click", function (event) {
     database.ref().update({
       turn: turns
     });
+  }
   });
 });
 $("#dislike-btn").on("click", function (event) {
@@ -347,6 +349,7 @@ $("#dislike-btn").on("click", function (event) {
     //Turn Switch	
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
+    if ((PlayerName == snapshot.child("players").child(1).val().name)) {
     database.ref("players/1").update({
       name: userName,
       pic: profilePic
@@ -358,6 +361,7 @@ $("#dislike-btn").on("click", function (event) {
     database.ref().update({
       turn: turns
     });
+  }
   });
 });
 //if Player 2 makes a choice 
@@ -372,6 +376,7 @@ $("#like-btn").on("click", function (event) {
     //Turn Switch		
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
+    if ((PlayerName == snapshot.child("players").child(1).val().name)) {
     database.ref("players/2").update({
       name: userName,
       city: myLocation
@@ -383,6 +388,7 @@ $("#like-btn").on("click", function (event) {
     database.ref().update({
       turn: turns,
     });
+  }
   });
 });
 $("#dislike-btn").on("click", function (event) {
@@ -396,6 +402,7 @@ $("#dislike-btn").on("click", function (event) {
     //Turn Switch		
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
+    if ((PlayerName == snapshot.child("players").child(1).val().name)) {
     database.ref("players/2").update({
       name: userName,
       city: myLocation
@@ -407,6 +414,7 @@ $("#dislike-btn").on("click", function (event) {
     database.ref().update({
       turn: turns,
     });
+  }
   });
 });
 // //Photo Collage
