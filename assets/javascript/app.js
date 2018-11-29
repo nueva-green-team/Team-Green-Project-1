@@ -367,10 +367,10 @@ $("#btn").on("click", function () {
 //           }
 //         });
 // }
-var Geocoder = new google.maps.Geocoder;
+var geocoder;
 
 function geocodeLatLng(latlng, cb) {
-  return Geocoder.geocode({
+  return geocoder.geocode({
     'location': latlng
   }, function(res, status) {
     return cb((status === 'OK') ? (res[1] || "Nothing found") : status);
@@ -386,9 +386,8 @@ var coordinates = {
 
 geocodeLatLng(coordinates, function(data) {
   console.log(data.address_components[0].long_name); // City
-  console.dir(data.address_components[2].long_name); // Country
+  console.log(data.address_components[2].long_name); // Country
 });
-var geocoder;
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
