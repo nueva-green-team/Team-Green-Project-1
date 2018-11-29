@@ -335,40 +335,6 @@ $("#dislike-btn").on("click", function () {
   //Change html to Player name
   PlayerName = userName;
   console.log(userName);
-
-  // Read snapshot when Player adds name
-  database.ref().once('value').then(function (snapshot) {
-    //if Player 1 doesn't exist
-    if ((snapshot.child("players").child(1).exists()) === false) {
-      database.ref("players/1").set({
-        name: "userName",
-        pic: "profilePic"
-      });
-      database.ref("players/1").update({
-        choice: "user_1_Choice",
-        city: "myLocation"
-      });
-      database.ref().update({
-        turn: 1
-      });
-      //if Player 2 doesn't exist
-    } else if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()) === false)) {
-      database.ref("players/2").set({
-        name: "userName",
-        pic: "profilePic"
-      });
-      database.ref("players/2").update({
-        choice: "user_2_Choice",
-        city: "myLocation"
-      });
-      database.ref().update({
-        turn: 1
-      });
-      //If both players exist
-    } else if ((snapshot.child("players").child(1).exists()) && (snapshot.child("players").child(2).exists())) {
-      console.log("Is it A MATCH?!?!");
-    }
-  });
 });
 //if Player 1 makes a choice 
 $("#like-btn").on("click", function (event) {
