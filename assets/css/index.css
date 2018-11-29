@@ -253,7 +253,7 @@ body {
   text-align: center;
 }
 
-.btn , .btn-primary{
+.btn-primary{
   background: #A770EF;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -265,7 +265,7 @@ body {
   padding: 15px 40px;
   font-size: 40px;
   display: inline-block, center;
-  margin-left: 360px;
+  margin-left: 540px;
   
 }
 
