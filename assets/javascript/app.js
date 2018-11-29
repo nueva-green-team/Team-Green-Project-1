@@ -317,9 +317,6 @@ $("#btn").on("click", function () {
 });
 });
 //Save location
-$(document).ready(function(){
-  //your code here;
-
 var geocoder;
 var pos;
 var mylocation = "";
@@ -365,4 +362,3 @@ function geocodeLatLng(geocoder) {
   }
 }
 }
-})
