@@ -271,7 +271,9 @@ database.ref().on("value", function (snapshot) {
   }
 });
 //if Player 1 makes a choice 
-$("#like-btn").on("click", function () {
+$("#like-btn").on("click", function (event) {
+  //prevent refresh
+  event.preventDefault();
   //Grabs player choice
   user_1_Choice = $(this).val();
   console.log(user_1_Choice);
@@ -292,7 +294,9 @@ $("#like-btn").on("click", function () {
   });
 });
 //if Player 2 makes a choice 
-$("#like-btn").on("click", function () {
+$("#like-btn").on("click", function (event) {
+  //prevent refresh
+  event.preventDefault();
   //Grabs player choice
   user_2_Choice = $(this).val();
   console.log(user_2_Choice);
