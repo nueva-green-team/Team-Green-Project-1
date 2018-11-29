@@ -263,7 +263,8 @@ database.ref().on("value", function (snapshot) {
     //Restating variables to match the database
     user_1_Choice = snapshot.child("players").child(1).val().choice;
     user_2_Choice = snapshot.child("players").child(2).val().choice;
-    userName = snapshot.child("players").child().val().name;
+    userName = snapshot.child("players").child(1).val().name;
+    userName = snapshot.child("players").child(2).val().name;
     //Check for winner
     CheckWinners.userMatch();
     // Display this page for 5 seconds and call clearDelay function to reset the game
@@ -332,7 +333,7 @@ $("#like-btn").on("click", function (event) {
       choice: user_1_Choice,
       city: myLocation,
     });
-    database.ref().update({
+    database.ref("turn").update({
       turn: turns
     });
   }
@@ -358,7 +359,7 @@ $("#dislike-btn").on("click", function (event) {
       choice: user_1_Choice,
       city: myLocation,
     });
-    database.ref().update({
+    database.ref("turn").update({
       turn: turns
     });
   }
@@ -385,7 +386,7 @@ $("#like-btn").on("click", function (event) {
       choice: user_2_Choice,
       pic: profilePic
     });
-    database.ref().update({
+    database.ref("turn").update({
       turn: turns,
     });
   }
@@ -411,7 +412,7 @@ $("#dislike-btn").on("click", function (event) {
       choice: user_2_Choice,
       pic: profilePic
     });
-    database.ref().update({
+    database.ref("turn").update({
       turn: turns,
     });
   }
