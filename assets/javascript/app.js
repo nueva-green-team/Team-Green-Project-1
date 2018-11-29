@@ -280,7 +280,7 @@ $("#like-btn").on("click", function (event) {
 
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch	
-    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : );
+    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
     user_1_Choice= (snapshot.child("choice").exists() ? snapshot.child("choice").val() : user_1_Choice);
     database.ref("players/1").update({
@@ -305,7 +305,7 @@ $("#dislike-btn").on("click", function (event) {
 
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch	
-    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : );
+    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
     user_1_Choice= (snapshot.child("choice").exists() ? snapshot.child("choice").val() : user_1_Choice);
     database.ref("players/1").update({
