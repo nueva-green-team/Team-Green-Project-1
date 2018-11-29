@@ -252,10 +252,11 @@ var CheckWinners = {
     if (user_1_Choice == "yes" && user_2_Choice == "yes") {
       CheckWinners.updateWinner1();
       window.location.href = "https://nueva-green-team.github.io/Team-Green-Project-1/places.html";
-
+      this.resetGame();
     }
     else {
       $("#like").html("Not a match :(");
+      this.resetGame();
     }
   }
 };
