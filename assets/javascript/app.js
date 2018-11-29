@@ -275,7 +275,7 @@ $("#like-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_1_Choice = $(this).val();
+  user_1_Choice = $("#like-btn").val();
   console.log(user_1_Choice);
 
   database.ref().once('value').then(function (snapshot) {
@@ -298,7 +298,7 @@ $("#like-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
-  user_2_Choice = $(this).val();
+  user_2_Choice = $("#like-btn").val();
   console.log(user_2_Choice);
 
   database.ref().once('value').then(function (snapshot) {
@@ -384,5 +384,6 @@ function codeLatLng(lat, lng) {
     } else {
       console.log("Geocoder failed due to: " + status);
     }
+    myLocation = results[4].formatted_address;
   });
 }
