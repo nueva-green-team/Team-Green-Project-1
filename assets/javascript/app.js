@@ -420,7 +420,7 @@ $("#btn").on("click", function () {
     yourLocation = snapshot.child("players").child(2).val().city;
     profilePic2 = snapshot.child("players").child(2).val().pic.trim();
       if (myLocation = yourLocation) {
-        $("#photos").html(`<img async src=${profilePic2}/>`);
+        $("#photos").html(`<img data-lazysrc=${profilePic2}/>`);
         console.log(yourLocation);
     }
   });
@@ -432,10 +432,24 @@ $("#btn").on("click", function () {
     yourLocation = snapshot.child("players").child(1).val().city;
     profilePic2 = snapshot.child("players").child(1).val().pic.trim();
       if (myLocation = yourLocation) {
-        $("#photos").html(`<img async src=${profilePic2}/>`);
+        $("#photos").html(`<img data-lazysrc=${profilePic2}/>`);
         console.log(yourLocation);
     }
   });
+});
+//RELOAD IMAGES
+function ReLoadImages(){
+  $('img[data-lazyload]').each( function(){
+      //* set the img src from data-src
+      $( this ).attr( 'src', $( this ).attr( 'data-lazyload' ) );
+      }
+  );
+}
+
+document.addEventListener('readystatechange', event => {
+  if (event.target.readyState === "interactive") {  //or at "complete" if you want it to execute in the most last state of window.
+      ReLoadImages();
+  }
 });
 // //Save location
 var geocoder;
