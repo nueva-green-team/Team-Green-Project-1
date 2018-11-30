@@ -409,6 +409,7 @@ $("#dislike-btn").on("click", function (event) {
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
     console.log(snapshot.child("players").child(1).val().name);
+    console.log(snapshot.child("players").child(2).val().city);
     if ((PlayerName == snapshot.child("players").child(1).val().name)) {
       database.ref("players/2").update({
         name: userName,
