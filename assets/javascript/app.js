@@ -311,7 +311,8 @@ $("#like-btn").on("click", function (event) {
   user_1_Choice = "yes";
   console.log(user_1_Choice);
   console.log(myLocation);
-
+  console.log(userName);
+  PlayerName = userName;
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch	
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
@@ -338,7 +339,8 @@ $("#dislike-btn").on("click", function (event) {
   //Grabs player choice
   user_1_Choice = "no";
   console.log(user_1_Choice);
-
+  console.log(userName);
+  PlayerName = userName;
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch	
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
@@ -365,7 +367,8 @@ $("#like-btn").on("click", function (event) {
   //Grabs player choice
   user_2_Choice = "yes";
   console.log(user_2_Choice);
-
+  console.log(userName);
+  PlayerName = userName;
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch		
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
@@ -391,7 +394,8 @@ $("#dislike-btn").on("click", function (event) {
   //Grabs player choice
   user_2_Choice = "no";
   console.log(user_2_Choice);
-
+  console.log(userName);
+  PlayerName = userName;
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch		
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
