@@ -49,7 +49,6 @@
     text-align: center;
     font-family: 'Amatic SC';
     text-align: center;
-    font-size: 50px;
     color: #000000; 
 }
 
@@ -60,19 +59,19 @@ form {
   font-size: 30px;
 
 }
-.btn {
+.jumbotron button {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: #ffffaa;
   font-family: 'Amatic SC';
-  border-width: 50px;
+  font-size: 15px;
+  border-width: 10px;
   border-color: #000000;
   color: #000000;
   font: bold;
-  padding: 60px 90px;
+  padding: 15px 30px;
   font-size: 15px;
-  
-  margin-left: 300px;
+  margin-left: 220px;
 }
 #photos {
     /* Prevent vertical gaps */
