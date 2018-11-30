@@ -75,6 +75,7 @@ function testAPI() {
 var profilePic = "";
 var userName = "";
 var myLocation = "";
+var newUser = {};
 
 function profileInfo() {
   console.log("incoming profile info");
@@ -86,6 +87,7 @@ function profileInfo() {
       console.log(JSON.stringify(response));
       console.log(response.picture.data.url);
       userName = response.name;
+      newUser = response.picture.data.url;
       console.log(response.name);
       $("#profile-pic").html(`<img src=${response.picture.data.url} / >`);
       $("#profile-name").html(response.name);
@@ -432,7 +434,7 @@ $("#btn").on("click", function () {
   });
 });
 // //Save location
-var geocoder;
+var geocoder = new google.maps.Geocoder();
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
