@@ -130,3 +130,7 @@ form {
 #floating-panel {
   visibility: hidden;
 }
+#collagepics {
+  width: 500px;
+  height: 500px;
+}
