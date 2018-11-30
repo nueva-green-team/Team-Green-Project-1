@@ -408,6 +408,7 @@ $("#dislike-btn").on("click", function (event) {
     //Turn Switch		
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
+    console.log(snapshot.child("players").child(1).val().name);
     if ((PlayerName == snapshot.child("players").child(1).val().name)) {
       database.ref("players/2").update({
         name: userName,
@@ -423,17 +424,14 @@ $("#dislike-btn").on("click", function (event) {
     }
   });
 });
-//Photo Collage
+//Photo Collage User 1
 $("#btn").on("click", function () {
   database.ref("players").on("value", function (snapshot) {
     console.log(snapshot.child("players"));
-    var i = 0;
-    snapshot.forEach(function(){
-      if (myLocation = snapshot.child("players").child(i).val().city) {
-        $("#photos").html(`<img src=${snapshot.child("players").child(i).val().pic} / >`);
+      if (myLocation = snapshot.child("players").child(2).val().city) {
+        $("#photos").html(`<img src=${snapshot.child("players").child(2).val().pic} / >`);
         console.log(snapshot.child("players").child(2).val().city);
     }
-  });
   });
 });
 // //Save location
