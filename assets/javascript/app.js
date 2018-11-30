@@ -265,21 +265,21 @@ var CheckWinners = {
 };
 database.ref().on("value", function (snapshot) {
   //disconnect
-  function playerDisconnect() {
-    if (PlayerName != "") {
-      //if this is Player 1's browser
-      if ((snapshot.child("players").child(1).exists()) && (user_1_Name == snapshot.child("players").child(1).val().name)) {
-        //delete the player 1 database
-        database.ref("players/1").onDisconnect().remove();
-        //if this is Player 2's browser
-      } else if ((snapshot.child("players").child(2).exists()) && (PlayerName == snapshot.child("players").child(2).val().name)) {
-        //delete the player 1 database
-        database.ref("players/2").onDisconnect().remove();
-        //delete the turn database				
-        database.ref("turn").onDisconnect().remove();
-      }
-    }
-  };
+  // function playerDisconnect() {
+  //   if (PlayerName != "") {
+  //     //if this is Player 1's browser
+  //     if ((snapshot.child("players").child(1).exists()) && (user_1_Name == snapshot.child("players").child(1).val().name)) {
+  //       //delete the player 1 database
+  //       database.ref("players/1").onDisconnect().remove();
+  //       //if this is Player 2's browser
+  //     } else if ((snapshot.child("players").child(2).exists()) && (PlayerName == snapshot.child("players").child(2).val().name)) {
+  //       //delete the player 1 database
+  //       database.ref("players/2").onDisconnect().remove();
+  //       //delete the turn database				
+  //       database.ref("turn").onDisconnect().remove();
+  //     }
+  //   }
+  // };
   if ((snapshot.child("players").child(1).exists()) && ((snapshot.child("players").child(2).exists()))) {
     //Keeping track of turn for the database
     var databaseTurn = snapshot.child("turn").val();
@@ -287,7 +287,7 @@ database.ref().on("value", function (snapshot) {
     user_2_Name = snapshot.child("players").child(2).val().name;
     //Both browers will show...
     //when any player disconnect from the game
-    playerDisconnect();
+    // playerDisconnect();
     //Both player's browser at turn 3
     var databaseTurn = snapshot.child("turn").val();
     if (databaseTurn == 3 && IsGameResetting == false) {
