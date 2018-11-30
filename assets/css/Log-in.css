@@ -49,6 +49,11 @@ body {
     margin-left: 350px;
 
 }
+
+fb login-btn {
+   padding: 15px 40px;
+
+}
 .icon-bar {
     width: 100%; /* Full-width */
     background-color: #000000; /* Dark-grey background */
