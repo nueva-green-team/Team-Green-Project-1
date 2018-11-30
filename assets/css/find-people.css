@@ -32,6 +32,8 @@
 .active {
   background-color: #000000; /* Add an active/current color */
 }
+
+/* find people near me- jumbotron */
 .jumbotron {
   width: 600px;
   height: 200px;
@@ -43,7 +45,7 @@
 
 }
 
-
+/* find people near me- header */
 .jumbotron h1 {
     margin-top: -50px;
     text-align: center;
@@ -59,6 +61,7 @@ form {
   font-size: 30px;
 
 }
+/* submit button on find people near me */
 .jumbotron button {
   text-align: center;
   margin-top: 10px;
@@ -91,6 +94,7 @@ form {
    height: auto !important; */
    width: 300px;
    height: 300px;
+   visibility: visible;
  }
  
  @media (max-width: 1200px) {
