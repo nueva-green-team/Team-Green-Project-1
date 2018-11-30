@@ -427,11 +427,12 @@ $("#dislike-btn").on("click", function (event) {
 $("#btn").on("click", function () {
   database.ref("players").on("value", function (snapshot) {
     console.log(snapshot.child("players"));
-    forEach(snapshot.child("players"))
+    snapshot.forEach(function(){
       if (myLocation = snapshot.child("players").child(i).val().city) {
         $("#photos").html(`<img src=${snapshot.child("players").child(i).val().pic} / >`);
         console.log(snapshot.child("players").child(2).val().city);
     }
+  });
   });
 });
 // //Save location
