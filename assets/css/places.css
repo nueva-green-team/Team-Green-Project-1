@@ -66,9 +66,10 @@ html, body {
   position: absolute;
   right: 5px;
   top: 60%;
-  margin-top: -300px;
+  margin-top: -175px;
+  margin-right: 35px;
   height: 400px;
-  width: 400px;
+  width: 425px;
   padding: 5px;
   z-index: 5;
   border: 9px solid black;
@@ -145,7 +146,7 @@ button {
   font-size: 13px;
   font-weight: 300;
 }
-#chat-window{
+#chat-window {
 	border: 10px solid black;
 	height: 450px;
 	overflow: scroll;
@@ -156,6 +157,7 @@ button {
 	color: black;
   font-size: 15px;
   margin-top: 90px;
+  margin-right: 750px;
 	
 }
 #chat-input{
