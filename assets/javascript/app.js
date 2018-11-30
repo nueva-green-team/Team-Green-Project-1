@@ -415,7 +415,7 @@ $("#dislike-btn").on("click", function (event) {
 });
 //Photo Collage User 1
 $("#btn").on("click", function () {
-  database.ref("players").on("value", function (snapshot) {
+  database.ref().on("value", function (snapshot) {
     console.log(snapshot.val());
     yourLocation = snapshot.child("players").child(2).val().city;
     profilePic2 = snapshot.child("players").child(2).val().pic;
