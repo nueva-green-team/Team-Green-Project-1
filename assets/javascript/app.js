@@ -434,7 +434,7 @@ $("#btn").on("click", function () {
   });
 });
 // //Save location
-var geocoder = new google.maps.Geocoder();
+var geocoder;
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
