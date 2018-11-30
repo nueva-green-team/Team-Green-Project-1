@@ -418,7 +418,7 @@ $("#btn").on("click", function () {
   database.ref().on("value", function (snapshot) {
     console.log(snapshot.val());
     yourLocation = snapshot.child("players").child(2).val().city;
-    profilePic2 = snapshot.child("players").child(2).val().pic;
+    profilePic2 = snapshot.child("players").child(2).val().pic.trim();
       if (myLocation = yourLocation) {
         $("#photos").html(`<img src=${profilePic2}/>`);
         console.log(yourLocation);
@@ -430,7 +430,7 @@ $("#btn").on("click", function () {
   database.ref().on("value", function (snapshot) {
     console.log(snapshot.val());
     yourLocation = snapshot.child("players").child(1).val().city;
-    profilePic2 = snapshot.child("players").child(1).val().trim().pic;
+    profilePic2 = snapshot.child("players").child(1).val().pic.trim();
       if (myLocation = yourLocation) {
         $("#photos").html(`<img src=${profilePic2}/>`);
         console.log(yourLocation);
