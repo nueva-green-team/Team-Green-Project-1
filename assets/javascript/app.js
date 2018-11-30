@@ -426,10 +426,11 @@ $("#dislike-btn").on("click", function (event) {
 //Photo Collage
 $("#btn").on("click", function () {
   database.ref("players").on("value", function (snapshot) {
-    console.log(snapshot);
-      if (myLocation = snapshot.child("players/2").val().city) {
-        $("#photos").html(`<img src=${snapshot.child("players".child(2).val().pic)} / >`);
-        console.log(snapshot.child("players/2").val().city);
+    console.log(snapshot.child("players"));
+    forEach(snapshot.child("players"))
+      if (myLocation = snapshot.child("players").child(i).val().city) {
+        $("#photos").html(`<img src=${snapshot.child("players").child(i).val().pic} / >`);
+        console.log(snapshot.child("players").child(2).val().city);
     }
   });
 });
