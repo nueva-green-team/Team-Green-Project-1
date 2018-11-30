@@ -216,7 +216,7 @@ firebase.auth().signOut().then(function () {
   // An error happened.
 });
 //LIKE OR NOT?
-var PlayerName = userName;
+var PlayerName = "";
 var user_1_Choice = "";
 var user_2_Choice = "";
 var user_1_Name = "";
