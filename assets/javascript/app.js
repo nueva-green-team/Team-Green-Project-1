@@ -73,8 +73,10 @@ function testAPI() {
 };
 //Get profile info
 var profilePic = "";
+var profilePic2 = "";
 var userName = "";
 var myLocation = "";
+var yourLocation = "";
 var newUser = {};
 
 function profileInfo() {
@@ -213,9 +215,7 @@ firebase.auth().signOut().then(function () {
   // An error happened.
 });
 //LIKE OR NOT?
-var PlayerName = "";
-var userName = "";
-var userName2 = "";
+var PlayerName = userName;
 var user_1_Choice = "";
 var user_2_Choice = "";
 var user_1_Name = "";
@@ -302,19 +302,6 @@ var CheckWinners = {
 //   }
 // });
 //Players entering the game
-var PlayerName = "";
-$("#like-btn").on("click", function () {
-  //Grab Player name input 
-  //Change html to Player name
-  PlayerName = userName;
-  console.log(userName);
-});
-$("#dislike-btn").on("click", function () {
-  //Grab Player name input 
-  //Change html to Player name
-  PlayerName = userName;
-  console.log(userName);
-});
 //if Player 1 makes a choice 
 $("#like-btn").on("click", function (event) {
   //prevent refresh
@@ -428,10 +415,24 @@ $("#dislike-btn").on("click", function (event) {
 //Photo Collage User 1
 $("#btn").on("click", function () {
   database.ref("players").on("value", function (snapshot) {
-    console.log(snapshot.child("players"));
-      if (myLocation = snapshot.child("players").child(2).val().city) {
-        $("#photos").html(`<img src=${snapshot.child("players").child(2).val().pic} / >`);
-        console.log(snapshot.child("players").child(2).val().city);
+    console.log(snapshot.val());
+    yourLocation = snapshot.child("players").child(2).val().city;
+    profilePic2 = snapshot.child("players").child(2).val().pic;
+      if (myLocation = yourLocation) {
+        $("#photos").html(`<img src=${profilePic2}/>`);
+        console.log(yourLocation);
+    }
+  });
+});
+//Photo Collage User 2
+$("#btn").on("click", function () {
+  database.ref("players").on("value", function (snapshot) {
+    console.log(snapshot.val());
+    yourLocation = snapshot.child("players").child(1).val().city;
+    profilePic2 = snapshot.child("players").child(1).val().pic;
+      if (myLocation = yourLocation) {
+        $("#photos").html(`<img src=${profilePic2}/>`);
+        console.log(yourLocation);
     }
   });
 });
