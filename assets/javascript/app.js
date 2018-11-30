@@ -492,4 +492,11 @@ function codeLatLng(lat, lng) {
     }
     myLocation = results[4].formatted_address;
   });
-}
+};
+$("#userPics").on("click", function(event){
+  event.preventDefault();
+  window.location.href = "https://nueva-green-team.github.io/Team-Green-Project-1/profile.html";
+  $("#profile-pic").replaceWith();
+  $("#user-name").replaceWith();
+
+})
