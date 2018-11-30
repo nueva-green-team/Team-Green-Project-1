@@ -427,6 +427,7 @@ $("#dislike-btn").on("click", function (event) {
 $("#btn").on("click", function () {
   database.ref("players").on("value", function (snapshot) {
     console.log(snapshot.child("players"));
+    var i = 0;
     snapshot.forEach(function(){
       if (myLocation = snapshot.child("players").child(i).val().city) {
         $("#photos").html(`<img src=${snapshot.child("players").child(i).val().pic} / >`);
