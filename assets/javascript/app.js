@@ -408,6 +408,7 @@ $("#dislike-btn").on("click", function (event) {
     //Turn Switch		
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
     turns++;
+    console.log(snapshot.child("players").child(1).val().name);
     if ((PlayerName == snapshot.child("players").child(1).val().name)) {
       database.ref("players/2").update({
         name: userName,
@@ -423,18 +424,18 @@ $("#dislike-btn").on("click", function (event) {
     }
   });
 });
-//Photo Collage
+//Photo Collage User 1
 $("#btn").on("click", function () {
   database.ref("players").on("value", function (snapshot) {
-    console.log(snapshot);
-      if (myLocation = snapshot.child("players/2").val().city) {
-        $("#photos").html(`<img src=${snapshot.child("players".child(2).val().pic)} / >`);
-        console.log(snapshot.child("players/2").val().city);
+    console.log(snapshot.child("players"));
+      if (myLocation = snapshot.child("players").child(2).val().city) {
+        $("#photos").html(`<img src=${snapshot.child("players").child(2).val().pic} / >`);
+        console.log(snapshot.child("players").child(2).val().city);
     }
   });
 });
 // //Save location
-var geocoder = new google.maps.Geocoder();
+var geocoder;
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
@@ -494,4 +495,11 @@ function codeLatLng(lat, lng) {
     }
     myLocation = results[4].formatted_address;
   });
-}
+};
+$("#userPics").on("click", function(event){
+  event.preventDefault();
+  window.location.href = "https://nueva-green-team.github.io/Team-Green-Project-1/profile.html";
+  $("#profile-pic").replaceWith();
+  $("#user-name").replaceWith();
+
+})
