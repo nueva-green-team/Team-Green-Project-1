@@ -130,6 +130,7 @@ form {
    margin: 0;
    padding: 0;
  }
+ /* hiding the map */
  #map {
   visibility: hidden;
 }
