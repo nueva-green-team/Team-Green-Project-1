@@ -413,30 +413,42 @@ $("#dislike-btn").on("click", function (event) {
     }
   });
 });
-//Photo Collage User 1
+//Photo Collage
 $("#btn").on("click", function () {
   database.ref().on("value", function (snapshot) {
     console.log(snapshot.val());
-    yourLocation = snapshot.child("players").child(2).val().city;
-    profilePic2 = snapshot.child("players").child(2).val().pic;
+    if ((PlayerName == snapshot.child("players").child(1).val().name)) {
+      yourLocation = snapshot.child("players").child(2).val().city;
+      profilePic2 = snapshot.child("players").child(2).val().pic;
       if (myLocation = yourLocation) {
         $("#photos").html(`<img src=${profilePic2}/>`);
         console.log(yourLocation);
+        console.log(profilePic2);
+      }
     }
-  });
-});
-//Photo Collage User 2
-$("#btn").on("click", function () {
-  database.ref("players").on("value", function (snapshot) {
-    console.log(snapshot.val());
-    yourLocation = snapshot.child("players").child(1).val().city;
-    profilePic2 = snapshot.child("players").child(1).val().pic;
+    if ((PlayerName == snapshot.child("players").child(2).val().name)) {
+      yourLocation = snapshot.child("players").child(1).val().city;
+      profilePic2 = snapshot.child("players").child(1).val().pic;
       if (myLocation = yourLocation) {
         $("#photos").html(`<img src=${profilePic2}/>`);
         console.log(yourLocation);
+        console.log(profilePic2);
+      }
     }
   });
 });
+// //Photo Collage User 2
+// $("#btn").on("click", function () {
+//   database.ref("players").on("value", function (snapshot) {
+//     console.log(snapshot.val());
+//     yourLocation = snapshot.child("players").child(1).val().city;
+//     profilePic2 = snapshot.child("players").child(1).val().pic;
+//     if (myLocation = yourLocation) {
+//       $("#photos").html(`<img src=${profilePic2}/>`);
+//       console.log(yourLocation);
+//     }
+//   });
+// });
 // //Save location
 var geocoder;
 
@@ -499,7 +511,7 @@ function codeLatLng(lat, lng) {
     myLocation = results[4].formatted_address;
   });
 };
-$("#userPics").on("click", function(event){
+$("#userPics").on("click", function (event) {
   event.preventDefault();
   window.location.href = "https://nueva-green-team.github.io/Team-Green-Project-1/profile.html";
   $("#profile-pic").replaceWith();
