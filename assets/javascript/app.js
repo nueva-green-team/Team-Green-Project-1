@@ -432,7 +432,7 @@ $("#btn").on("click", function () {
     yourLocation = snapshot.child("players").child(1).val().city;
     profilePic2 = snapshot.child("players").child(1).val().pic;
       if (myLocation = yourLocation) {
-        $("#photos").html(`<img id="collagepics" src=${profilePic2}/>`);
+        $("#photos").html(`<img src=${profilePic2}/>`);
         console.log(yourLocation);
     }
   });

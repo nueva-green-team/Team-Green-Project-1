@@ -87,8 +87,10 @@ form {
  
  #photos img {
    /* Just in case there are inline attributes */
-   width: 100% !important;
-   height: auto !important;
+   /* width: 100% !important;
+   height: auto !important; */
+   width: 300px;
+   height: 300px;
  }
  
  @media (max-width: 1200px) {
@@ -129,8 +131,4 @@ form {
 }
 #floating-panel {
   visibility: hidden;
-}
-#collagepics {
-  width: 500px;
-  height: 500px;
 }
