@@ -44,7 +44,7 @@ html, body {
   padding: 0;
 }
 #right-panel {
-  font-family: 'Roboto','sans-serif';
+  font-family: 'Amatic SC';
   line-height: 30px;
   padding-left: 10px;
   border: 10px solid black;
@@ -148,7 +148,7 @@ button {
 }
 #chat-window {
 	border: 10px solid black;
-	height: 450px;
+	height: 350px;
 	overflow: scroll;
 	scroll-behavior: auto;
 	text-align: left;
@@ -157,7 +157,6 @@ button {
 	color: black;
   font-size: 15px;
   margin-top: 90px;
-  margin-right: 750px;
 	
 }
 #chat-input{

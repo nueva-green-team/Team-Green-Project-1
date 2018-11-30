@@ -65,13 +65,14 @@ form {
   margin-top: 20px;
   background-color: #ffffaa;
   font-family: 'Amatic SC';
-  border-width: 5px;
+  border-width: 50px;
   border-color: #000000;
   color: #000000;
   font: bold;
-  padding: 15px 30px;
+  padding: 60px 90px;
   font-size: 15px;
-  display:inline-block;
+  
+  margin-left: 300px;
 }
 #photos {
     /* Prevent vertical gaps */
