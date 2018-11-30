@@ -302,17 +302,13 @@ database.ref().on("value", function (snapshot) {
     }
   }
 });
-//Players entering the game
-//if Player 1 makes a choice 
+//Match Buttons
 $("#like-btn").on("click", function (event) {
   //prevent refresh
   event.preventDefault();
   //Grabs player choice
   user_1_Choice = "yes";
-  console.log(user_1_Choice);
-  console.log(myLocation);
-  console.log(userName);
-  PlayerName = userName;
+  user_2_Choice = "yes";
   database.ref().once('value').then(function (snapshot) {
     //Turn Switch	
     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
@@ -331,6 +327,19 @@ $("#like-btn").on("click", function (event) {
         turn: turns
       });
     }
+    else if ((PlayerName == snapshot.child("players").child(2).val().name)) {
+      database.ref("players/2").update({
+        name: userName,
+        city: myLocation
+      });
+      database.ref("players/2").update({
+        choice: user_2_Choice,
+        pic: profilePic
+      });
+      database.ref().update({
+        turn: turns,
+      });
+    }
   });
 });
 $("#dislike-btn").on("click", function (event) {
@@ -338,6 +347,7 @@ $("#dislike-btn").on("click", function (event) {
   event.preventDefault();
   //Grabs player choice
   user_1_Choice = "no";
+  user_2_Choice = "no";
   console.log(user_1_Choice);
   console.log(userName);
   PlayerName = userName;
@@ -358,22 +368,7 @@ $("#dislike-btn").on("click", function (event) {
         turn: turns
       });
     }
-  });
-});
-//if Player 2 makes a choice 
-$("#like-btn").on("click", function (event) {
-  //prevent refresh
-  event.preventDefault();
-  //Grabs player choice
-  user_2_Choice = "yes";
-  console.log(user_2_Choice);
-  console.log(userName);
-  PlayerName = userName;
-  database.ref().once('value').then(function (snapshot) {
-    //Turn Switch		
-    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
-    turns++;
-    if ((PlayerName == snapshot.child("players").child(2).val().name)) {
+    else if ((PlayerName == snapshot.child("players").child(2).val().name)) {
       database.ref("players/2").update({
         name: userName,
         city: myLocation
@@ -388,35 +383,63 @@ $("#like-btn").on("click", function (event) {
     }
   });
 });
-$("#dislike-btn").on("click", function (event) {
-  //prevent refresh
-  event.preventDefault();
-  //Grabs player choice
-  user_2_Choice = "no";
-  console.log(user_2_Choice);
-  console.log(userName);
-  PlayerName = userName;
-  database.ref().once('value').then(function (snapshot) {
-    //Turn Switch		
-    turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
-    turns++;
-    console.log(snapshot.child("players").child(1).val().name);
-    console.log(snapshot.child("players").child(2).val().city);
-    if ((PlayerName == snapshot.child("players").child(2).val().name)) {
-      database.ref("players/2").update({
-        name: userName,
-        city: myLocation
-      });
-      database.ref("players/2").update({
-        choice: user_2_Choice,
-        pic: profilePic
-      });
-      database.ref().update({
-        turn: turns,
-      });
-    }
-  });
-});
+// //if Player 2 makes a choice 
+// $("#like-btn").on("click", function (event) {
+//   //prevent refresh
+//   event.preventDefault();
+//   //Grabs player choice
+//   user_2_Choice = "yes";
+//   console.log(user_2_Choice);
+//   console.log(userName);
+//   PlayerName = userName;
+//   database.ref().once('value').then(function (snapshot) {
+//     //Turn Switch		
+//     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
+//     turns++;
+//     if ((PlayerName == snapshot.child("players").child(2).val().name)) {
+//       database.ref("players/2").update({
+//         name: userName,
+//         city: myLocation
+//       });
+//       database.ref("players/2").update({
+//         choice: user_2_Choice,
+//         pic: profilePic
+//       });
+//       database.ref().update({
+//         turn: turns,
+//       });
+//     }
+//   });
+// });
+// $("#dislike-btn").on("click", function (event) {
+//   //prevent refresh
+//   event.preventDefault();
+//   //Grabs player choice
+//   user_2_Choice = "no";
+//   console.log(user_2_Choice);
+//   console.log(userName);
+//   PlayerName = userName;
+//   database.ref().once('value').then(function (snapshot) {
+//     //Turn Switch		
+//     turns = (snapshot.child("turn").exists() ? snapshot.child("turn").val() : turns);
+//     turns++;
+//     console.log(snapshot.child("players").child(1).val().name);
+//     console.log(snapshot.child("players").child(2).val().city);
+//     if ((PlayerName == snapshot.child("players").child(2).val().name)) {
+//       database.ref("players/2").update({
+//         name: userName,
+//         city: myLocation
+//       });
+//       database.ref("players/2").update({
+//         choice: user_2_Choice,
+//         pic: profilePic
+//       });
+//       database.ref().update({
+//         turn: turns,
+//       });
+//     }
+//   });
+// });
 //Photo Collage User 1
 $("#btn").on("click", function () {
   database.ref().on("value", function (snapshot) {
